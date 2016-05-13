@@ -43,6 +43,7 @@
       <modelsDirectory>
         <dbTableDirectory>
           <dbTableFile dbTableName="Genre"/>
+          <dbTableFile dbTableName="ActeurRealisateur"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
