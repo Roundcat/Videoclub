@@ -86,7 +86,9 @@ th {
 td, th {
     padding-right: 25px;
 }
-
+table li {
+  margin-left: 40px;
+}
 /* style form */
 form dt {
     width: 100px;

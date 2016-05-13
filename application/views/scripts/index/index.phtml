@@ -5,20 +5,22 @@ $this->headTitle($this->title);
 
 <table>
     <tr>
-        <th>Genre</th>
-        <th></th>
+        <th>Bienvenue !!!</th>
     </tr>
-<?php foreach($this->genre as $genre) : ?>
     <tr>
-        <td><?php echo $this->escape($genre->genre);?></td>
-
-        <td>
-            <a href="<?php echo $this->url(array('controller'=>'genre',
-                'action'=>'modifier', 'id'=>$genre->id));?>">Modifier</a>
-            <a href="<?php echo $this->url(array('controller'=>'genre',
-                'action'=>'supprimer', 'id'=>$genre->id));?>">Supprimer</a>
-        </td>
-
+        <td>Voici les actions disponibles dans l'application :</td>
     </tr>
-<?php endforeach; ?>
+    <tr>
+        <td><li>Gérer les films</li></td>
+    </tr>
+    <tr>
+        <td><li>Gérer les genres</li></td>
+    </tr>
+    <tr>
+        <td><li>Gérer les personnes (clients et employés)</li></td>
+    </tr>
+    <tr>
+        <td><li>Gérer les acteurs et les réalisateurs des films</li></td>
+    </tr>
+
 </table>
