@@ -1,0 +1,106 @@
+/* Layout Stylesheet */
+
+body {
+  margin: 20px;
+  background: #445566;
+  color: #3E606F;
+  text-align: center;
+  padding: 0;
+  font-family: Verdana,sans-serif;
+}
+
+#outer {
+  text-align: left;
+  border: 1px, solid #000000;
+  width: 650px;
+  margin: auto;
+}
+
+#header {
+  height: 60px;
+  background: #99CCBB;
+  font-size: 1.6em;
+  color: #666666;
+  font-weight: 600;
+  padding-top: 15px;
+  text-transform : uppercase;
+}
+
+#bar {
+  height: 25px;
+  background: #445566;
+  color: #3E606F;
+  padding: 0;
+}
+
+#column {
+  float: left;
+  background: #99CCBB;
+  color: #666666;
+  width: 145px;
+}
+
+#content {
+  width: 495px;
+  background: #F2F2F2;
+  color: #666666;
+  border: solid #F2F2F2;
+  border-width: 0 0 0 1px;
+  text-align: left;
+}
+
+#footer {
+  height: 25px;
+  background: #193441;
+  color: #3E606F;
+  border: solid black;
+  border-width: 1px 0 0 0;
+  margin: 0;
+}
+
+/* Presentation Stylesheet */
+a {
+    color: #CC4B4B;
+}
+
+h3, p {
+  margin: 0;
+  padding: 15px;
+}
+
+h4 {
+  margin: 0;
+  padding: 5px 0;
+}
+
+p:first-letter {
+  font-weight: bold;
+}
+
+/* Table */
+th {
+    text-align: left;
+    text-decoration : underline;
+}
+
+td, th {
+    padding-right: 25px;
+}
+
+/* style form */
+form dt {
+    width: 100px;
+    display: block;
+    float: left;
+    clear: left;
+}
+
+form dd {
+    margin-left: 0;
+    float: left;
+}
+
+form #submitbutton {
+    margin-left: 200px;
+}
+/* Presentation Stylesheet */

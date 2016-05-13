@@ -1,0 +1,33 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('Videoclub');
+
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+    <?php echo $this->headMeta(); ?>
+    <?php echo $this->headTitle(); ?>
+    <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/style.css'); ?>
+</head>
+
+<body>
+  <div id="outer">
+    <div id="header" align="center"><?php echo $this->title; ?></div>
+    <div id="bar"></div>
+    <div id="bodyblock" align="right">
+      <div id="column" align="center">
+        <h4 align="center">Menu</h4>
+        <a href="<?php echo $this->url(array('controller'=>'index' , 'action'=>'index')); ?>">Accueil</a><br />
+        <a href="<?php echo $this->url(array('controller'=>'genre' , 'action'=>'index')); ?>">Genres</a><br />
+      </div>
+      <div id="content">
+        <h3 align="center">Liste des genres</h3>
+        <?php echo $this->layout()->content; ?>
+      </div>
+    </div>
+    <div id="footer" align="center"></div>
+  </div>
+</body>
+
+</html>

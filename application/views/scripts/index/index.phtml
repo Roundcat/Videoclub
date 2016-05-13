@@ -1,0 +1,24 @@
+<?php
+$this->title = 'Videoclub ZF';
+$this->headTitle($this->title);
+?>
+
+<table>
+    <tr>
+        <th>Genre</th>
+        <th></th>
+    </tr>
+<?php foreach($this->genre as $genre) : ?>
+    <tr>
+        <td><?php echo $this->escape($genre->genre);?></td>
+
+        <td>
+            <a href="<?php echo $this->url(array('controller'=>'genre',
+                'action'=>'modifier', 'id'=>$genre->id));?>">Modifier</a>
+            <a href="<?php echo $this->url(array('controller'=>'genre',
+                'action'=>'supprimer', 'id'=>$genre->id));?>">Supprimer</a>
+        </td>
+
+    </tr>
+<?php endforeach; ?>
+</table>
