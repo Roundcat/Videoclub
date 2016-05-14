@@ -6,18 +6,19 @@ $this->headTitle($this->title);
         'action'=>'ajouter'));?>">Ajouter des personnes</a></p>
 <table>
     <tr>
-        <th>Liste des clients et des employés</th>
-        <th></th>
+        <th>Nom</th>
+        <th>Prénom</th>
+				<th>Courriel</th>
+				<th></th>
     </tr>
-<?php foreach($this->personnes as $personne) : ?>
+<?php foreach($this->personne as $personne) : ?>
     <tr>
-        <td><?php echo $this->escape($personnes->personne);?></td>
-
+        <td><?php echo $this->escape($personne->nom); ?></td>
+				<td><?php echo $this->escape($personne->prenom); ?></td>
+				<td><?php echo $this->escape($personne->courriel); ?></td>
         <td>
             <a href="<?php echo $this->url(array('controller'=>'personne',
                 'action'=>'modifier', 'id'=>$personne->id));?>">Modifier</a>
-            <a href="<?php echo $this->url(array('controller'=>'personne',
-                'action'=>'desactive', 'id'=>$personne->id));?>">Désactiver</a>
         </td>
 
     </tr>

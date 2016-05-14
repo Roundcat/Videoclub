@@ -2,7 +2,6 @@
 
 class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
 {
-
     protected $_name = 'personne';
 
     public function obtenirPersonne($id)
