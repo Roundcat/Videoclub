@@ -15,5 +15,20 @@ class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
         return $row->toArray();
     }
 
-    
+    public function ajouterPersonne($nom, $prenom, $password, $courriel, $adresse1, $adresse2, $codePostal, $ville, $estEmploye)
+    {
+        $data = array(
+            'prenom'      =>  $prenom,
+            'nom'         =>  $nom,
+            'motDePasse'  =>  $password,
+            'courriel'    =>  $courriel,
+            'adresse1'    =>  $adresse1,
+            'adresse2'    =>  $adresse2,
+            'code_postal' =>  $codePostal,
+            'ville'       =>  $ville,
+            'esEmploye'   =>  $estEmploye,
+        );
+        $this->insert($data);
+    }
+
 }
