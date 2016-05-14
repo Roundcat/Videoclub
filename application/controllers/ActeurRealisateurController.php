@@ -11,7 +11,7 @@ class ActeurRealisateurController extends Zend_Controller_Action
     public function indexAction()
     {
       $ActeurRealisateurs = new Application_Model_DbTable_ActeurRealisateur();
-      $this->view->acteur_realisateur = $ActeurRealisateurs->fetchAll();
+      $this->view->acteurRealisateur = $ActeurRealisateurs->fetchAll();
     }
 
     public function ajouterAction()

@@ -3,7 +3,7 @@
 class Application_Model_DbTable_ActeurRealisateur extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'acteur-realisateur';
+    protected $_name = 'acteur_realisateur';
 
     public function obtenirActeurRealisateur($id)
     {
@@ -32,6 +32,5 @@ class Application_Model_DbTable_ActeurRealisateur extends Zend_Db_Table_Abstract
         );
         $this->update($data, 'id = '. (int)$id);
     }
-
 
 }
