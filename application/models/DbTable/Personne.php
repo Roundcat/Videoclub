@@ -31,4 +31,19 @@ class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
         $this->insert($data);
     }
 
+    public function modifierPersonne($id, $nom, $prenom, $password, $courriel, $adresse1, $adresse2, $codePostal, $ville, $estEmploye)
+    {
+        $data = array(
+            'prenom'      =>  $prenom,
+            'nom'         =>  $nom,
+            'motDePasse'  =>  $password,
+            'courriel'    =>  $courriel,
+            'adresse1'    =>  $adresse1,
+            'adresse2'    =>  $adresse2,
+            'code_postal' =>  $codePostal,
+            'ville'       =>  $ville,
+            'esEmploye'   =>  $estEmploye,
+        );
+        $this->update($data, 'id = '. (int)$id);
+    }
 }
