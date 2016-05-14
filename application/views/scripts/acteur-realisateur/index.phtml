@@ -6,13 +6,14 @@ $this->headTitle($this->title);
         'action'=>'ajouter'));?>">Ajouter de nouveaux acteurs ou réalisateurs</a></p>
 <table>
     <tr>
-        <th>Acteurs - Réalisateurs</th>
+        <th>Nom</th>
+        <th>Prénom</th>
         <th></th>
     </tr>
 <?php foreach($this->acteurRealisateur as $ActeurRealisateur) : ?>
     <tr>
-        <td><?php echo $this->escape($ActeurRealisateur->acteurRealisateur);?></td>
-
+        <td><?php echo $this->escape($ActeurRealisateur->nom) ;?></td>
+        <td><?php echo $this->escape($ActeurRealisateur->prenom) ;?></td>
         <td>
             <a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
                 'action'=>'modifier', 'id'=>$ActeurRealisateur->id));?>">Modifier</a>
