@@ -1,4 +1,25 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Personne</b> and script/action name <b>index</b></p>
-</div>
+<?php
+$this->title = 'Les personnes';
+$this->headTitle($this->title);
+?>
+<p><a href="<?php echo $this->url(array('controller'=>'personne',
+        'action'=>'ajouter'));?>">Ajouter des personnes</a></p>
+<table>
+    <tr>
+        <th>Liste des clients et des employés</th>
+        <th></th>
+    </tr>
+<?php foreach($this->personnes as $personne) : ?>
+    <tr>
+        <td><?php echo $this->escape($personnes->personne);?></td>
+
+        <td>
+            <a href="<?php echo $this->url(array('controller'=>'personne',
+                'action'=>'modifier', 'id'=>$personne->id));?>">Modifier</a>
+            <a href="<?php echo $this->url(array('controller'=>'personne',
+                'action'=>'desactive', 'id'=>$personne->id));?>">Désactiver</a>
+        </td>
+
+    </tr>
+<?php endforeach; ?>
+</table>
