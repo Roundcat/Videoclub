@@ -37,6 +37,7 @@
       <formsDirectory>
         <formFile formName="Genre"/>
         <formFile formName="ActeurRealisateur"/>
+        <formFile formName="Personne"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
