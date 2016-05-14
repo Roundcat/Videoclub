@@ -10,7 +10,8 @@ class PersonneController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $personnes = new Application_Model_DbTable_Personne();
+        $this->view->personne = $personnes->fetchAll();
     }
 
     public function ajouterAction()
@@ -40,14 +41,3 @@ class PersonneController extends Zend_Controller_Action
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
