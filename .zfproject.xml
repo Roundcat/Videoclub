@@ -51,6 +51,7 @@
           <dbTableFile dbTableName="Genre"/>
           <dbTableFile dbTableName="ActeurRealisateur"/>
           <dbTableFile dbTableName="Personne"/>
+          <dbTableFile dbTableName="Film"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
