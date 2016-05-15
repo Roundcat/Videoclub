@@ -68,8 +68,8 @@ class ActeurRealisateurController extends Zend_Controller_Action
     {
       // Instanciation de Application_Form_ActeurRealisateur
       $form = new Application_Form_ActeurRealisateur();
-      // Affectation au bouton d'envoi le libellé 'Ajouter'
-      $form->envoyer->setLabel('Ajouter');
+      // Affectation au bouton d'envoi le libellé 'Sauvegarder'
+      $form->envoyer->setLabel('Sauvegarder');
       // Assignation du formulaire à la vue pour l'affichage
       $this->view->form = $form;
 
