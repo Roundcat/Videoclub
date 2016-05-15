@@ -66,6 +66,10 @@ a {
     color: #CC4B4B;
 }
 
+a:hover {
+  color: #3E606F;
+}
+
 h3, p {
   margin: 0;
   padding: 15px;
