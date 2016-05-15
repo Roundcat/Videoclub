@@ -25,7 +25,7 @@ class PersonneController extends Zend_Controller_Action
      */
     public function ajouterAction()
     {
-      // Instanciation de Application_Form_ActeurRealisateur
+      // Instanciation de Application_Form_Personne
       $form = new Application_Form_Personne();
       // Affectation au bouton d'envoi le libellé 'Ajouter'
       $form->envoyer->setLabel('Ajouter');
@@ -57,6 +57,7 @@ class PersonneController extends Zend_Controller_Action
           // Après avoir sauvegardé le nouvel enregistrement d'acteur réalisateur
           // redirection vers l'action index avec l'aide d'action Redirector
           // Ici retour vers la page d'accueil
+          $this->_helper->flashMessenger->addMessage('Personne ajoutée correctement');
           $this->_helper->redirector('index');
           // Si les données du formulaire ne sont pas valides
           // nouvel affichage du formulaire avec les données fournies

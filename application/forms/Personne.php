@@ -71,11 +71,11 @@ class Application_Form_Personne extends Zend_Form
                  ->addFilter('StringTrim')
                  ->addValidator('StringLength', true, array(1,50));
 
-      // $estEmploye = new Zend_Form_Element_Checkbox('estEmploye');
-      // $estEmploye->setLabel('La personne est un employé : ')
-      //            ->setRequired(true)
-      //            ->setCheckedValue('1')
-      //            ->setUncheckedValue('0');
+      $estEmploye = new Zend_Form_Element_Checkbox('estEmploye');
+      $estEmploye->setLabel('La personne est un employé : ')
+                 ->setRequired(true)
+                 ->setCheckedValue('1')
+                 ->setUncheckedValue('0');
 
       $envoyer = new Zend_Form_Element_Submit('envoyer');
       $envoyer->setAttrib('id', 'boutonenvoyer');
