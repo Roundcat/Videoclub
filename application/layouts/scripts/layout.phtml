@@ -12,31 +12,29 @@ echo $this->doctype(); ?>
 </head>
 
 <body>
-    <div id="content">
-        <h1><?php echo $this->escape($this->title); ?></h1>
-        <?php echo $this->layout()->content; ?>
+    <div id="outer">
+        <div id="header" align="center">
+          <a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'index')); ?>" style="text-decoration:none"><?php echo $this->title; ?></a>
+        </div>
+
+        <div id="bar"></div>
+
+        <div id="bodyblock" align="right">
+          <div id="column" align="center">
+            <h4 align="center">Menu</h4>
+            <a href="<?php echo $this->url(array('controller'=>'index' , 'action'=>'index')); ?>">Accueil</a><br /><br />
+            <a href="<?php echo $this->url(array('controller'=>'film' , 'action'=>'index')); ?>">Films</a><br />
+            <a href="<?php echo $this->url(array('controller'=>'genre' , 'action'=>'index')); ?>">Genres</a><br />
+            <a href="<?php echo $this->url(array('controller'=>'acteurRealisateur' , 'action'=>'index')); ?>">Acteurs - Réalisateurs</a><br />
+          </div>
+
+          <div id="content">
+              <?php echo $this->layout()->content; ?>
+          </div>
+        </div>
+
+        <div id="footer" align="center"></div>
     </div>
 </body>
-
-<!-- <body>
-  <div id="outer">
-    <div id="header" align="center"><a href="<?php echo $this->url(array('controller'=>'index' , 'action'=>'index')); ?>" style="text-decoration:none"><?php echo $this->title; ?></a></div>
-    <div id="bar"></div>
-    <div id="bodyblock" align="right">
-      <div id="column" align="center">
-        <h4 align="center">Menu</h4>
-        <a href="<?php echo $this->url(array('controller'=>'index' , 'action'=>'index')); ?>">Accueil</a><br /><br />
-        <a href="<?php echo $this->url(array('controller'=>'film' , 'action'=>'index')); ?>">Films</a><br />
-        <a href="<?php echo $this->url(array('controller'=>'genre' , 'action'=>'index')); ?>">Genres</a><br />
-        <a href="<?php echo $this->url(array('controller'=>'acteurRealisateur' , 'action'=>'index')); ?>">Acteurs - Réalisateurs</a><br />
-      </div>
-      <div id="content">
-        <h3 align="center">Liste des genres</h3>
-        <?php echo $this->layout()->content; ?>
-      </div>
-    </div>
-    <div id="footer" align="center"></div>
-  </div>
-</body> -->
 
 </html>
