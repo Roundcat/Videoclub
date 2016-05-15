@@ -8,14 +8,19 @@ class ActeurRealisateurController extends Zend_Controller_Action
         /* Initialize action controller here */
     }
 
-    /**
-     * Action : Affiche tous les acteurs et réalisateurs présents en base
-     * View : acteur-realisateur/index
-     */
     public function indexAction()
     {
-      $acteurRealisateurs = new Application_Model_DbTable_ActeurRealisateur();
-      $this->view->acteurRealisateur = $acteurRealisateurs->fetchAll();
+        // action body
+    }
+
+    /**
+     * Action : Affiche tous les acteurs et réalisateurs présents en base
+     * View : acteur-realisateur/liste
+     */
+    public function listeAction()
+    {
+        $acteurRealisateurs = new Application_Model_DbTable_ActeurRealisateur();
+        $this->view->acteurRealisateur = $acteurRealisateurs->fetchAll();
     }
 
     /**

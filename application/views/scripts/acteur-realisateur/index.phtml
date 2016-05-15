@@ -2,23 +2,13 @@
 $this->title = 'Les Acteurs Réalisateurs';
 $this->headTitle($this->title);
 ?>
-<p><a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
-        'action'=>'ajouter'));?>">Ajouter un acteur ou un réalisateur</a></p>
-<table>
-    <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th></th>
-    </tr>
-<?php foreach($this->acteurRealisateur as $acteurRealisateur) : ?>
-    <tr>
-        <td><?php echo $this->escape($acteurRealisateur->nom) ;?></td>
-        <td><?php echo $this->escape($acteurRealisateur->prenom) ;?></td>
-        <td>
-            <a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
-                'action'=>'modifier', 'id'=>$acteurRealisateur->id));?>">Modifier</a>
-        </td>
-
-    </tr>
-<?php endforeach; ?>
-</table>
+<p>Tous ce qui concerne les acteurs et les réalisateurs des films.</p>
+<P>Vous pouvez afficher tous les acteurs et réalisateurs.<br />
+<a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
+        'action'=>'liste'));?>">Afficher la liste</a></p>
+<p>Vous pouvez ajouter un acteur ou un réalisateur.<br />
+<a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
+        'action'=>'ajouter'));?>">Ajouter</a></p>
+<p>Vous pouvez rechercher un acteur ou un réalisateur.<br />
+<a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
+        'action'=>'rechercher'));?>">Rechercher</a></p>
