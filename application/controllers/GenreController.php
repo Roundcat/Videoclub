@@ -10,8 +10,13 @@ class GenreController extends Zend_Controller_Action
 
     public function indexAction()
     {
-      $genres = new Application_Model_DbTable_Genre();
-      $this->view->genre = $genres->fetchAll();
+        // action body
+    }
+
+    public function listeAction()
+    {
+        $genres = new Application_Model_DbTable_Genre();
+        $this->view->genre = $genres->fetchAll();
     }
 
     public function ajouterAction()
@@ -78,6 +83,5 @@ class GenreController extends Zend_Controller_Action
           $this->view->genre = $genres->obtenirGenre($id);
        }
     }
-
 
 }

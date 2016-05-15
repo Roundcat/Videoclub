@@ -2,7 +2,7 @@
 $this->title = "Supprimer un genre";
 $this->headTitle($this->title);
 ?>
-<p>Êtes-vous sûr de vouloir supprimer
+<p>Êtes-vous sûr de vouloir supprimer le genre 
     '<?php echo $this->escape($this->genre['genre']); ?>' ?
 </p>
 <form action="<?php echo $this->url(array('action'=>'supprimer')); ?>" method="post">

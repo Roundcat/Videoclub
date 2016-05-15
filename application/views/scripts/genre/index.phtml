@@ -2,24 +2,13 @@
 $this->title = 'Les genres';
 $this->headTitle($this->title);
 ?>
-<p><a href="<?php echo $this->url(array('controller'=>'genre',
+<p>Tous ce qui concerne les genres des films.</p>
+<P>Vous pouvez afficher tous les genres.<br />
+<a href="<?php echo $this->url(array('controller'=>'genre',
+        'action'=>'liste'));?>">Afficher tous les genres</a></p>
+<p>Vous pouvez ajouter un nouveau genre.<br />
+<a href="<?php echo $this->url(array('controller'=>'genre',
         'action'=>'ajouter'));?>">Ajouter de nouveaux genres</a></p>
-<table>
-    <tr>
-        <th>Genre</th>
-        <th></th>
-    </tr>
-<?php foreach($this->genre as $genre) : ?>
-    <tr>
-        <td><?php echo $this->escape($genre->genre);?></td>
-
-        <td>
-            <a href="<?php echo $this->url(array('controller'=>'genre',
-                'action'=>'modifier', 'id'=>$genre->id));?>">Modifier</a>
-            <a href="<?php echo $this->url(array('controller'=>'genre',
-                'action'=>'supprimer', 'id'=>$genre->id));?>">Supprimer</a>
-        </td>
-
-    </tr>
-<?php endforeach; ?>
-</table>
+<p>Vous pouvez rechercher un genre de film.<br />
+<a href="<?php echo $this->url(array('controller'=>'genre',
+        'action'=>'rechercher'));?>">Rechercher un genre</a></p>
