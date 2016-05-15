@@ -57,7 +57,7 @@ class Application_Form_Personne extends Zend_Form
                ->addFilter('StringTrim')
                ->addValidator('StringLength', true, array(0,100));
 
-      $codePostal = new Zend_Form_Element_Text('codePostal');
+      $codePostal = new Zend_Form_Element_Text('code_postal');
       $codePostal->setLabel('Code postal : ')
                  ->setRequired(true)
                  ->addFilter('StripTags')

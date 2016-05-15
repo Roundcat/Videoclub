@@ -23,7 +23,7 @@ class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
             'courriel'    =>  $courriel,
             'adresse1'    =>  $adresse1,
             'adresse2'    =>  $adresse2,
-            'codePostal'  =>  $codePostal,
+            'code_postal'  =>  $codePostal,
             'ville'       =>  $ville,
             'esEmploye'   =>  $estEmploye,
         );
@@ -34,12 +34,12 @@ class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
     {
         $data = array(
             'nom'         =>  $nom,
-            'prenom'      =>  $prenom,            
+            'prenom'      =>  $prenom,
             'motDePasse'  =>  $password,
             'courriel'    =>  $courriel,
             'adresse1'    =>  $adresse1,
             'adresse2'    =>  $adresse2,
-            'codePostal'  =>  $codePostal,
+            'code_postal'  =>  $codePostal,
             'ville'       =>  $ville,
             'esEmploye'   =>  $estEmploye,
         );
