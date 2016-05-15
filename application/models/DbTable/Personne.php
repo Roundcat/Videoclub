@@ -45,4 +45,13 @@ class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
         );
         $this->update($data, 'id = '. (int)$id);
     }
+
+    public function desactivePersonne($id, $desactive)
+    {
+      $desactive = 1;
+      $data = array(
+          'desactive'     =>  $desactive,
+      );
+      $this->update($data, 'id = '. (int)$id);
+    }
 }
