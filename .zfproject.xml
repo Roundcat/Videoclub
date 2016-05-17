@@ -34,6 +34,7 @@
           <actionMethod actionName="consulter"/>
           <actionMethod actionName="desactive"/>
           <actionMethod actionName="rechercher"/>
+          <actionMethod actionName="liste"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
@@ -111,6 +112,9 @@
             <viewScriptFile forActionName="liste"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="ActeurRealisateur">
+            <viewScriptFile forActionName="liste"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Personne">
             <viewScriptFile forActionName="liste"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>

@@ -1,26 +1,14 @@
 <?php
-$this->title = 'Les personnes';
+$this->title = 'Les Acteurs Réalisateurs';
 $this->headTitle($this->title);
 ?>
-<p><a href="<?php echo $this->url(array('controller'=>'personne',
-        'action'=>'ajouter'));?>">Ajouter des personnes</a></p>
-<table>
-    <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-				<th>Courriel</th>
-				<th></th>
-    </tr>
-<?php foreach($this->personne as $personne) : ?>
-    <tr>
-        <td><?php echo $this->escape($personne->nom); ?></td>
-				<td><?php echo $this->escape($personne->prenom); ?></td>
-				<td><?php echo $this->escape($personne->courriel); ?></td>
-        <td>
-            <a href="<?php echo $this->url(array('controller'=>'personne',
-                'action'=>'modifier', 'id'=>$personne->id));?>">Modifier</a>
-        </td>
-
-    </tr>
-<?php endforeach; ?>
-</table>
+<p>Tous ce qui concerne les personnes (clients ou employés).</p>
+<P>Vous pouvez afficher toutes les personnes.<br />
+<a href="<?php echo $this->url(array('controller'=>'Personne',
+        'action'=>'liste'));?>">Afficher la liste</a></p>
+<p>Vous pouvez ajouter une personne.<br />
+<a href="<?php echo $this->url(array('controller'=>'Personne',
+        'action'=>'ajouter'));?>">Ajouter</a></p>
+<p>Vous pouvez rechercher une personne.<br />
+<a href="<?php echo $this->url(array('controller'=>'Personne',
+        'action'=>'rechercher'));?>">Rechercher</a></p>

@@ -8,11 +8,17 @@ class PersonneController extends Zend_Controller_Action
         /* Initialize action controller here */
     }
 
+
+    public function indexAction()
+    {
+        // action body
+    }
+
     /**
      * Action : Affiche tous les clients et tous les employés présents en base
-     * View : personne/index
+     * View : personne/liste
      */
-    public function indexAction()
+    public function listeAction()
     {
         $personnes = new Application_Model_DbTable_Personne();
         $this->view->personne = $personnes->fetchAll();
@@ -86,6 +92,5 @@ class PersonneController extends Zend_Controller_Action
     {
         // action body
     }
-
 
 }
