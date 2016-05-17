@@ -48,11 +48,11 @@ class PersonneController extends Zend_Controller_Action
           $courriel   = $form->getValue('courriel');
           $adresse1   = $form->getValue('adresse1');
           $adresse2   = $form->getValue('adresse2');
-          $codePostal = $form->getValue('codePostal');
+          $codePostal = $form->getValue('code_postal');
           $ville      = $form->getValue('ville');
           $estEmploye = $form->getValue('estEmploye');
           $personnes  = new Application_Model_DbTable_Personne();
-          $personnes->ajouterPersonne($nom, $prenom, $password, $courriel, $adresse1, $adresse2, $codePostal, $ville, $estEmploye);
+      $personnes->ajouterPersonne($nom, $prenom, $password, $courriel, $adresse1, $adresse2, $codePostal, $ville, $estEmploye);
 
           // Après avoir sauvegardé le nouvel enregistrement d'acteur réalisateur
           // redirection vers l'action index avec l'aide d'action Redirector

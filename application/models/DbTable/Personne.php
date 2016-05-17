@@ -23,9 +23,9 @@ class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
             'courriel'    =>  $courriel,
             'adresse1'    =>  $adresse1,
             'adresse2'    =>  $adresse2,
-            'code_postal'  =>  $codePostal,
+            'code_postal' =>  $codePostal,
             'ville'       =>  $ville,
-            'esEmploye'   =>  $estEmploye,
+            'estEmploye'  =>  $estEmploye,
         );
         $this->insert($data);
     }
@@ -39,9 +39,9 @@ class Application_Model_DbTable_Personne extends Zend_Db_Table_Abstract
             'courriel'    =>  $courriel,
             'adresse1'    =>  $adresse1,
             'adresse2'    =>  $adresse2,
-            'code_postal'  =>  $codePostal,
+            'code_postal' =>  $codePostal,
             'ville'       =>  $ville,
-            'esEmploye'   =>  $estEmploye,
+            'estEmploye'  =>  $estEmploye,
         );
         $this->update($data, 'id = '. (int)$id);
     }
