@@ -17,6 +17,8 @@ class GenreController extends Zend_Controller_Action
     {
         $genres = new Application_Model_DbTable_Genre();
         $this->view->genre = $genres->fetchAll();
+        // $genre = new Application_Model_GenreMapper();
+        // $this->view->entries = $genre->fetchAll();
     }
 
     public function ajouterAction()

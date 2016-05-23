@@ -55,6 +55,8 @@
           <dbTableFile dbTableName="Personne"/>
           <dbTableFile dbTableName="Film"/>
         </dbTableDirectory>
+        <modelFile modelName="Genre"/>
+        <modelFile modelName="GenreMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
