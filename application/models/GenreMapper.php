@@ -38,16 +38,6 @@ class Application_Model_GenreMapper
         }
     }
 
-    // public function obtenirGenre($id)
-    // {
-    //     $id = (int)$id;
-    //     $row = $this->fetchRow('id = ' . $id);
-    //     if (!$row) {
-    //         throw new Exception("Impossible de trouver l'enregistrement $id");
-    //     }
-    //     return $row->toArray();
-    // }
-
     public function find($id, Application_Model_Genre $genre)
     {
         $result = $this->getDbTable()->find($id);
