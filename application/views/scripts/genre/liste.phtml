@@ -9,13 +9,15 @@ $this->headTitle($this->title);
         <th>Genre</th>
         <th></th>
     </tr>
-<?php foreach($this->genre as $genre) : ?>
+<?php
+foreach($this->entries as $genre) : ?>
     <tr>
         <td><?php echo $this->escape($genre->genre);?></td>
 
         <td>
             <a href="<?php echo $this->url(array('controller'=>'genre',
                 'action'=>'modifier', 'id'=>$genre->id));?>">Modifier</a>
+
             <a href="<?php echo $this->url(array('controller'=>'genre',
                 'action'=>'supprimer', 'id'=>$genre->id));?>">Supprimer</a>
         </td>

@@ -9,7 +9,7 @@ class Application_Model_GenreMapper
         if (is_string($dbTable)) {
             $dbTable = new $dbTable();
         }
-        if (!dbTable instanceof Zend_Db_Table_Abstract) {
+        if (!$dbTable instanceof Zend_Db_Table_Abstract) {
             throw new Exception ('Invalid table data gateway provided');
         }
         $this->_dbTable = $dbTable;
@@ -28,7 +28,7 @@ class Application_Model_GenreMapper
     {
         $data = array(
             'genre' => $genre->getGenre(),
-        );
+);
 
         if (null === ($id = $genre->getId())) {
             unset($data['id']);
