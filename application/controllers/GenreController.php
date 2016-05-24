@@ -1,8 +1,6 @@
 <?php
-
 class GenreController extends Zend_Controller_Action
 {
-
     public function init()
     {
         /* Initialize action controller here */
@@ -21,22 +19,34 @@ class GenreController extends Zend_Controller_Action
 
     public function ajouterAction()
     {
-      $form = new Application_Form_Genre();
-      $form->envoyer->setLabel('Ajouter');
-      $this->view->form = $form;
+    //   $form = new Application_Form_Genre();
+    //   $form->envoyer->setLabel('Ajouter');
+    //   $this->view->form = $form;
+    //   if ($this->getRequest()->isPost()) {
+    //       $formData = $this->getRequest()->getPost();
+    //       if ($form->isValid($formData)) {
+    //           $genre = $form->getValue('genre');
+    //           $genres = new Application_Model_DbTable_Genre();
+    //           $genres->ajouterGenre($genre);
+    //           $this->_helper->redirector('index');
+    //       } else {
+    //           $form->populate($formData);
+    //       }
+    //   }
+    //
+        $request = $this->getRequest();
+        $form    = new Application_Form_Genre();
 
-      if ($this->getRequest()->isPost()) {
-          $formData = $this->getRequest()->getPost();
-          if ($form->isValid($formData)) {
-              $genre = $form->getValue('genre');
-              $genres = new Application_Model_DbTable_Genre();
-              $genres->ajouterGenre($genre);
+        if ($this->getRequest()->isPost()) {
+            if ($form->isValid($request->getPost())) {
+                $genre = new Application_Model_Genre($form->getValues());
+                $mapper  = new Application_Model_GenreMapper();
+                $mapper->save($genre);
+                return $this->_helper->redirector('index');
+            }
+        }
 
-              $this->_helper->redirector('index');
-          } else {
-              $form->populate($formData);
-          }
-      }
+        $this->view->form = $form;
     }
 
     public function modifierAction()
@@ -44,7 +54,6 @@ class GenreController extends Zend_Controller_Action
       $form = new Application_Form_Genre();
       $form->envoyer->setLabel('Sauvegarder');
       $this->view->form = $form;
-
       if ($this->getRequest()->isPost()) {
           $formData = $this->getRequest()->getPost();
           if ($form->isValid($formData)) {
@@ -52,7 +61,6 @@ class GenreController extends Zend_Controller_Action
               $genre = $form->getValue('genre');
               $genres = new Application_Model_DbTable_Genre();
               $genres->modifierGenre($id, $genre);
-
               $this->_helper->redirector('index');
           } else {
               $form->populate($formData);
@@ -75,7 +83,6 @@ class GenreController extends Zend_Controller_Action
              $genres = new Application_Model_DbTable_Genre();
              $genres->supprimerGenre($id);
          }
-
          $this->_helper->redirector('index');
        } else {
           $id = $this->_getParam('id', 0);
@@ -83,5 +90,4 @@ class GenreController extends Zend_Controller_Action
           $this->view->genre = $genres->obtenirGenre($id);
        }
     }
-
 }
