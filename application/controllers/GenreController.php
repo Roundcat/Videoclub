@@ -111,18 +111,21 @@ class GenreController extends Zend_Controller_Action
 
     public function supprimerAction()
     {
-    //   if ($this->getRequest()->isPost()) {
-    //      $supprimer = $this->getRequest()->getPost('supprimer');
-    //      if ($supprimer == 'Oui') {
-    //          $id = $this->getRequest()->getPost('id');
-    //          $genres = new Application_Model_DbTable_Genre();
-    //          $genres->supprimerGenre($id);
-    //      }
-    //      $this->_helper->redirector('index');
-    //    } else {
-    //       $id = $this->_getParam('id', 0);
-    //       $genres = new Application_Model_DbTable_Genre();
-    //       $this->view->genre = $genres->obtenirGenre($id);
-    //    }
+        if ($this->getRequest()->isPost()) {
+            $supprimer = $this->getRequest()->getPost('supprimer');
+            if ($supprimer == 'Oui') {
+                $id = $this->_getParam('id', 0);
+                $mapper = new Application_Model_GenreMapper();
+                $genre = new Application_Model_Genre();
+                $genre = $mapper->supprimerGenre($id);
+            }
+            $this->_helper->redirector('liste');
+            } else {
+                $id = $this->_getParam('id', 0);
+                $mapper  = new Application_Model_GenreMapper();
+                $genre = new Application_Model_Genre();
+                // $genre = $mapper->obtenirGenre($id);
+                // $this->view->genre = $genre;
+            }
     }
 }

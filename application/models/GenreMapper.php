@@ -67,6 +67,11 @@ class Application_Model_GenreMapper
         }
     }
 
+    public function supprimerGenre($id)
+    {
+        $this->getDbTable()->delete('id =' . (int)$id);
+    }
+
     public function fetchAll()
     {
         $resultSet = $this->getDbTable()->fetchAll();
