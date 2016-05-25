@@ -19,7 +19,7 @@ class Application_Model_Personne
     public function __construct(array $options = null)
     {
         if (is_array($options)) {
-            $this->setOptions($options); 
+            $this->setOptions($options);
         }
     }
 
@@ -145,7 +145,8 @@ class Application_Model_Personne
 
     public function setDateCreation($dateCreation)
     {
-        $this->_dateCreation = (datetime) $dateCreation;
+        $dateCreation = new Zend_Date();
+        $this->_dateCreation = $dateCreation;
         return $this;
     }
 
