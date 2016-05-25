@@ -63,13 +63,13 @@
         <modelFile modelName="Personne"/>
         <modelFile modelName="PersonneMapper"/>
         <modelFile modelName="ActeurRealisateur"/>
-        <modelFile modelName="ActeurRealisateurMapper"/>
         <modelFile modelName="Film"/>
         <modelFile modelName="FilmMapper"/>
         <modelFile modelName="Location"/>
         <modelFile modelName="LocationMapper"/>
         <modelFile modelName="Media"/>
         <modelFile modelName="MediaMapper"/>
+        <modelFile modelName="ActeurRealisateurMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
