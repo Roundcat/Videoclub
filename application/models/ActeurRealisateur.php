@@ -77,5 +77,4 @@ class Application_Model_ActeurRealisateur
     {
         return $this->_id;
     }
-
 }
