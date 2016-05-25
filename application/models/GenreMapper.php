@@ -2,6 +2,15 @@
 class Application_Model_GenreMapper
 {
     protected $_dbTable;
+    protected $_table;
+    protected $_db;
+
+        public function __construct() {
+           $this->_table = "genre";
+           $this->_db = Zend_Registry::get('db');
+           $this->_db->query("SET NAMES UTF8");
+        }
+
     public function setDbTable($dbTable)
     {
         if (is_string($dbTable)) {
@@ -13,6 +22,7 @@ class Application_Model_GenreMapper
         $this->_dbTable = $dbTable;
         return $this;
     }
+
     public function getDbTable()
     {
         if (null === $this->_dbTable) {
@@ -20,11 +30,12 @@ class Application_Model_GenreMapper
         }
         return $this->_dbTable;
     }
-    public function save(Application_Model_Genre $genre)
+
+    public function ajouterGenre(Application_Model_Genre $genre)
     {
         $data = array(
             'genre' => $genre->getGenre(),
-);
+        );
         if (null === ($id = $genre->getId())) {
             unset($data['id']);
             $this->getDbTable()->insert($data);
@@ -32,16 +43,45 @@ class Application_Model_GenreMapper
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
     }
-    public function find($id, Application_Model_Genre $genre)
+
+    public function modifierGenre($id, $genre)
     {
-        $result = $this->getDbTable()->find($id);
-        if (0 == count($result)) {
-            return;
-        }
-        $row = $result->current();
-        $genre->setId($row->id)
-              ->setGenre($row->genre);
+        $data = array(
+            'genre' => $genre,
+        );
+        $this->getDbTable()->update($data, array('id = ?' => $id));
     }
+
+    public function obtenirGenre($id)
+    {
+        $row = $this->_db->fetchRow('SELECT * FROM '.$this->getDbTable()->getName().' WHERE `id` = '.$id.' ');
+        if($row){
+            $genre = new Application_Model_Genre();
+            $genre->setId($row['id']);
+            $genre->setGenre($row['genre']);
+
+            return $genre;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public function testObtenirGenre($id)
+    {
+        $row = $this->_db->fetchRow('SELECT * FROM '.$this->getDbTable()->getName().' WHERE `id` = '.$id.' ');
+        if($row){
+            $genre = new Application_Model_Genre();
+            $genre->setId($row['id']);
+            $genre->setGenre($row['genre']);
+
+            return $genre;
+        }
+        else {
+            return 0;
+        }
+    }
+
     public function fetchAll()
     {
         $resultSet = $this->getDbTable()->fetchAll();

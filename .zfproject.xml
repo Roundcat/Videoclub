@@ -54,9 +54,22 @@
           <dbTableFile dbTableName="ActeurRealisateur"/>
           <dbTableFile dbTableName="Personne"/>
           <dbTableFile dbTableName="Film"/>
+          <dbTableFile dbTableName="Help"/>
+          <dbTableFile dbTableName="Location"/>
+          <dbTableFile dbTableName="Media"/>
         </dbTableDirectory>
         <modelFile modelName="Genre"/>
         <modelFile modelName="GenreMapper"/>
+        <modelFile modelName="Personne"/>
+        <modelFile modelName="PersonneMapper"/>
+        <modelFile modelName="ActeurRealisateur"/>
+        <modelFile modelName="ActeurRealisateurMapper"/>
+        <modelFile modelName="Film"/>
+        <modelFile modelName="FilmMapper"/>
+        <modelFile modelName="Location"/>
+        <modelFile modelName="LocationMapper"/>
+        <modelFile modelName="Media"/>
+        <modelFile modelName="MediaMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
