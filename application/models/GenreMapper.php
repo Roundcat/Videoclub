@@ -67,21 +67,6 @@ class Application_Model_GenreMapper
         }
     }
 
-    public function testObtenirGenre($id)
-    {
-        $row = $this->_db->fetchRow('SELECT * FROM '.$this->getDbTable()->getName().' WHERE `id` = '.$id.' ');
-        if($row){
-            $genre = new Application_Model_Genre();
-            $genre->setId($row['id']);
-            $genre->setGenre($row['genre']);
-
-            return $genre;
-        }
-        else {
-            return 0;
-        }
-    }
-
     public function fetchAll()
     {
         $resultSet = $this->getDbTable()->fetchAll();

@@ -41,5 +41,4 @@ class Application_Form_Genre extends Zend_Form
             'ignore' => true,
         ));
     }
-
 }

@@ -76,7 +76,6 @@ class GenreController extends Zend_Controller_Action
     //           $form->populate($genres->obtenirGenre($id));
     //       }
     //   }
-
         $request = $this->getRequest();
         $form    = new Application_Form_Genre();
         $form->submit->setLabel('Modifier');
@@ -108,18 +107,18 @@ class GenreController extends Zend_Controller_Action
 
     public function supprimerAction()
     {
-      if ($this->getRequest()->isPost()) {
-         $supprimer = $this->getRequest()->getPost('supprimer');
-         if ($supprimer == 'Oui') {
-             $id = $this->getRequest()->getPost('id');
-             $genres = new Application_Model_DbTable_Genre();
-             $genres->supprimerGenre($id);
-         }
-         $this->_helper->redirector('index');
-       } else {
-          $id = $this->_getParam('id', 0);
-          $genres = new Application_Model_DbTable_Genre();
-          $this->view->genre = $genres->obtenirGenre($id);
-       }
+    //   if ($this->getRequest()->isPost()) {
+    //      $supprimer = $this->getRequest()->getPost('supprimer');
+    //      if ($supprimer == 'Oui') {
+    //          $id = $this->getRequest()->getPost('id');
+    //          $genres = new Application_Model_DbTable_Genre();
+    //          $genres->supprimerGenre($id);
+    //      }
+    //      $this->_helper->redirector('index');
+    //    } else {
+    //       $id = $this->_getParam('id', 0);
+    //       $genres = new Application_Model_DbTable_Genre();
+    //       $this->view->genre = $genres->obtenirGenre($id);
+    //    }
     }
 }

@@ -17,7 +17,7 @@ class Application_Model_Genre
             if (is_array($options)) {
                 $this->setOptions($options);
             }
-        // }
+        //  }
     }
 
     // __set et __get pour simplifier l'accès aux attributs et proxier vers les autres getters et setters.
