@@ -1,9 +1,14 @@
 <?php
 class GenreController extends Zend_Controller_Action
 {
+    protected $_flashMessenger = null;
+
     public function init()
     {
         /* Initialize action controller here */
+        $this->_flashMessenger = $this->_helper
+                                      ->getHelper('FlashMessenger');
+        $this->initView();
     }
 
     public function indexAction()
@@ -85,7 +90,6 @@ class GenreController extends Zend_Controller_Action
             if ($form->isValid($formData)) {
                 $id = $this->_getParam('id', 0);
                 $genre = $form->getValue('genre');
-                // $genres = new Application_Model_Genre();
                 $mapper  = new Application_Model_GenreMapper();
                 $mapper->modifierGenre($id, $genre);
                 return $this->_helper->redirector('liste');
