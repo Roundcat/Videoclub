@@ -50,6 +50,9 @@ echo $this->doctype(); ?>
                           <li class="divider"></li>
                           <li><a href="<?php echo $this->url(array('controller'=>'genre' , 'action'=>'liste')); ?>"><span class="glyphicon glyphicon-list"></span> Voir les genres</a></li>
                           <li><a href="<?php echo $this->url(array('controller'=>'genre' , 'action'=>'ajouter')); ?>"><span class="glyphicon glyphicon-plus"></span> Ajouter un genre</a></li>
+                          <li class="divider"></li>
+                          <li><a href="<?php echo $this->url(array('controller'=>'acteurRealisateur' , 'action'=>'liste')); ?>"><span class="glyphicon glyphicon-list"></span> Voir les acteurs/réalisateurs</a></li>
+                          <li><a href="<?php echo $this->url(array('controller'=>'acteurRealisateur' , 'action'=>'ajouter')); ?>"><span class="glyphicon glyphicon-plus"></span> Ajouter un acteur/réalisateur</a></li>
                       </ul></li>
                     <li class="dropdown">
                       <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Les personnes<b class="caret"></b></a>
@@ -76,15 +79,6 @@ echo $this->doctype(); ?>
                   </form> -->
                 </div>
             </nav>
-
-          <div id="column">
-            <h4 align="center">Menu</h4>
-            <a href="<?php echo $this->url(array('controller'=>'index' , 'action'=>'index')); ?>">Accueil</a><br /><br />
-            <a href="<?php echo $this->url(array('controller'=>'film' , 'action'=>'index')); ?>">Films</a><br />
-            <a href="<?php echo $this->url(array('controller'=>'genre' , 'action'=>'index')); ?>">Genres</a><br />
-            <a href="<?php echo $this->url(array('controller'=>'acteurRealisateur' , 'action'=>'index')); ?>">Acteurs - Réalisateurs</a><br />
-            <a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'index')); ?>">Personnes</a><br />
-          </div>
 
           <div class="site_body" id="content">
               <?php echo $this->layout()->content; ?>
