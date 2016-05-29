@@ -32,4 +32,32 @@ class Application_Model_PersonneMapper
         return $this->_dbTable;
     }
 
+    public function obtenirAllClients($id)
+    {
+        $row = $this->_db->fetchAll('SELECT * FROM '.$this->getDbTable()->getName().' WHERE `id` = '.$id.' AND `estEmploye` = 0 ;');
+        if($row){
+            $client = new Application_Model_Personne();
+            $client->setId($row['id']);
+            $client->setPrenom($row['prenom']);
+
+            return $client;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public function fetchAll()
+    {
+        $resultSet = $this->getDbTable()->fetchAll();
+        $entries   = array();
+        foreach ($resultSet as $row) {
+            $entry = new Application_Model_Personne();
+            $entry->setId($row->id)
+                  ->setPrenom($row->prenom)
+                  ->setNom($row->nom);
+            $entries[] = $entry;
+        }
+        return $entries;
+    }
 }
