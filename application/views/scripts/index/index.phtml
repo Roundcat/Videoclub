@@ -3,24 +3,18 @@ $this->title = 'Videoclub ZF';
 $this->headTitle($this->title);
 ?>
 
-<table>
-    <tr>
-        <th>Bienvenue !!!</th>
-    </tr>
-    <tr>
-        <td>Voici les actions disponibles dans l'application :</td>
-    </tr>
-    <tr>
-        <td><li>Gérer les films</li></td>
-    </tr>
-    <tr>
-        <td><li>Gérer les genres</li></td>
-    </tr>
-    <tr>
-        <td><li>Gérer les personnes (clients et employés)</li></td>
-    </tr>
-    <tr>
-        <td><li>Gérer les acteurs et les réalisateurs des films</li></td>
-    </tr>
+<legend>Bienvenue au Videoclub ZF !!!</legend>
 
-</table>
+<div class="col-sm-12 col-md-offset-2 col-md-8">
+    <p>A la recherche d'un film pour passer un bon moment ?
+        <strong>Videoclub ZF</strong> vous permettra de trouver votre bonheur.
+        Nos DVD et nos Bluray n'attendent plus vous.</p>
+    <p>Vous ne savez pas encore quoi choisir, nos experts sont là pour vous conseiller.</p>
+    <p>Entrez dans l'expèrience <strong>Videoclub ZF</strong>.</p>
+    <p>Pour nous rejoindre, un clic sur le bouton ci-dessous et le monde de la video s'ouvrira à vous.</p>
+</div>
+
+<!-- Button -->
+<div class="col-sm-12 col-md-offset-5 col-md-4">
+    <a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'ajouter')); ?>"><button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-th-list"></span> Créer mon compte</button></a>
+</div>
