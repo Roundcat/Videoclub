@@ -14,8 +14,7 @@ $this->headTitle($this->title);
 <?php foreach($this->personne as $personne) : ?>
     <tr>
         <td><?php echo $this->escape($personne->nom); ?></td>
-				<td><?php echo $this->escape($personne->prenom); ?></td>
-				<td><?php echo $this->escape($personne->courriel); ?></td>
+		<td><?php echo $this->escape($personne->prenom); ?></td>
         <td>
             <a href="<?php echo $this->url(array('controller'=>'personne',
                 'action'=>'modifier', 'id'=>$personne->id));?>">Modifier</a>
