@@ -5,19 +5,11 @@ class Application_Model_Genre
     protected $_id;
     protected $_genre;
 
-    public function __construct(array $options = null/*, int $pid = NULL*/)
+    public function __construct(array $options = null)
     {
-        // if (isset($pid)) {
-        //     $mapper = new Application_Model_GenreMapper();
-        //     $genre = new Application_Model_Genre();
-        //     $mapper->obtenirGenre($pid, $genre);
-        //     $this->_id = $genre->getId();
-        //     $this->_genre = $genre->getGenre();
-        // } else {
-            if (is_array($options)) {
-                $this->setOptions($options);
-            }
-        //  }
+        if (is_array($options)) {
+            $this->setOptions($options);
+        }
     }
 
     // __set et __get pour simplifier l'accès aux attributs et proxier vers les autres getters et setters.
