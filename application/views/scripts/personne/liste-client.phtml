@@ -1,4 +1,23 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Personne</b> and script/action name <b>listeClient</b></p>
-</div>
+<?php
+$this->title = 'Les clients';
+$this->headTitle($this->title);
+?>
+<p><a href="<?php echo $this->url(array('controller'=>'personne',
+        'action'=>'ajouter'));?>">Ajouter un client</a></p>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+		<th></th>
+    </tr>
+<?php foreach($this->personne as $personne) : ?>
+    <tr>
+        <td><?php echo $this->escape($personne->nom); ?></td>
+		<td><?php echo $this->escape($personne->prenom); ?></td>
+        <td>
+            <a href="<?php echo $this->url(array('controller'=>'personne', 'action'=>'modifier', 'id'=>$personne->id));?>">Modifier</a>
+        </td>
+
+    </tr>
+<?php endforeach; ?>
+</table>
