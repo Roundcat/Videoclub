@@ -5,82 +5,121 @@ class Application_Form_Personne extends Zend_Form
 
     public function init()
     {
-      $this->setName('personne');
+        // La méthode HTTP d'envoi du formulaire
+        $this->setMethod('post');
 
-      $id = new Zend_Form_Element_Hidden('id');
-      $id->addFilter('Int');
+        // Un élément prénom
+        $this->addElement('text', 'prenom', array(
+            'label'         =>  'Prénom : ',
+            'required'      =>  true,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'Alpha',
+                                                        'StringLength', true, 'options' => array(1, 45))
+        ));
 
-      $nom = new Zend_Form_Element_Text('nom');
-      $nom->setLabel('Nom : ')
-          ->setRequired(true)
-          ->addFilter('StripTags')
-          ->addFilter('StringTrim')
-          ->addValidator('Alpha')
-          ->addValidator('NotEmpty');
+        // Un élément nom
+        $this->addElement('text', 'nom', array(
+            'label'         =>  'Nom : ',
+            'required'      =>  true,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'Alpha',
+                                                        'StringLength', true, 'options' => array(1, 45))
+        ));
 
-      $prenom = new Zend_Form_Element_Text('prenom');
-      $prenom->setLabel('Prénom : ')
-             ->setRequired(true)
-             ->addFilter('StripTags')
-             ->addFilter('StringTrim')
-             ->addValidator('Alpha')
-             ->addValidator('NotEmpty');
+        // Un élément courriel
+        $this->addElement('text', 'courriel', array(
+            'label'         =>  'Adresse email : ',
+            'required'      =>  true,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'EmailAddress',
+                                                        'StringLength', true, 'options' => array(6,50))
+        ));
 
-      $password = new Zend_Form_Element_Password('motDePasse');
-      $password->setLabel('Saisir le mot de passe : ')
-              ->setRequired(true)
-              ->addFilter('StripTags')
-              ->addFilter('StringTrim')
-              ->addValidator('NotEmpty')
-              ->addValidator('StringLength', true, array(6,12));
+        // Un élément password
+        $this->addElement('password', 'password', array(
+            'label'         =>  'Mot de passe : ',
+            'required'      =>  true,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'StringLength', true, 'options' => array(6, 12))
+        ));
 
-      $courriel = new Zend_Form_Element_Text('courriel');
-      $courriel->setLabel('Courriel : ')
-                ->setRequired(true)
-                ->addFilter('StripTags')
-                ->addFilter('StringTrim')
-                ->addValidator('NotEmpty')
-                ->addValidator('EmailAddress')
-                ->addValidator('StringLength', true, array(6,50));
+        // Un élément addresse1
+        $this->addElement('text', 'adresse1', array(
+            'label'         =>  'Adresse principale : ',
+            'required'      =>  false,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'StringLength', true, 'options' => array(0, 100))
+        ));
 
-      $adresse1 = new Zend_Form_Element_Text('adresse1');
-      $adresse1->setLabel('Adresse principale : ')
-               ->setRequired(false)
-               ->addFilter('StripTags')
-               ->addFilter('StringTrim')
-               ->addValidator('StringLength', true, array(0,100));
+        // Un élément addresse2
+        $this->addElement('text', 'adresse2', array(
+            'label'         =>  'Suite de l\'adresse : ',
+            'required'      =>  false,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'StringLength', true, 'options' => array(0, 100))
+        ));
 
-      $adresse2 = new Zend_Form_Element_Text('adresse2');
-      $adresse2->setLabel('Suite de l\'adresse : ')
-               ->setRequired(false)
-               ->addFilter('StripTags')
-               ->addFilter('StringTrim')
-               ->addValidator('StringLength', true, array(0,100));
+        // Un élément code postal
+        $this->addElement('text', 'codePostal', array(
+            'label'         =>  'Code postal : ',
+            'required'      =>  true,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'StringLength', true, 'options' => array(5, 5))
+        ));
 
-      $codePostal = new Zend_Form_Element_Text('code_postal');
-      $codePostal->setLabel('Code postal : ')
-                 ->setRequired(true)
-                 ->addFilter('StripTags')
-                 ->addFilter('StringTrim')
-                 ->addValidator('StringLength', true, array(5,5));
+        // Un élément ville
+        $this->addElement('text', 'ville', array(
+            'label'         =>  'Ville : ',
+            'required'      =>  true,
+            'filters'       =>  array('StripTags', 'StringTrim'),
+            'validators'    =>  array('validator' =>    'NotEmpty',
+                                                        'Alpha',
+                                                        'StringLength', true, 'options' => array(0, 100))
+        ));
 
-      $ville = new Zend_Form_Element_Text('ville');
-      $ville->setLabel('Ville : ')
-                 ->setRequired(true)
-                 ->addFilter('StripTags')
-                 ->addFilter('StringTrim')
-                 ->addValidator('StringLength', true, array(1,50));
+        // Un élément estEmployé
+        $this->addElement('checkbox', 'estEmploye', array(
+            'label'             =>  'A cocher si la personne est un employé : ',
+            'required'          =>  true,
+            'checked_value'     =>  '1',
+            'unchecked_value'   =>  '0'
+        ));
 
-      $estEmploye = new Zend_Form_Element_Checkbox('estEmploye');
-      $estEmploye->setLabel('La personne est un employé : ')
-                 ->setRequired(true)
-                 ->setCheckedValue('1')
-                 ->setUncheckedValue('0');
 
-      $envoyer = new Zend_Form_Element_Submit('envoyer');
-      $envoyer->setAttrib('id', 'boutonenvoyer');
+        // Un bouton d'envoi
+        $this->addElement('submit', 'submit', array(
+            'ignore'   => true,
+            'label'    => 'Sauvegarder',
+        ));
 
-      $this->addElements(array($id, $nom, $prenom, $password, $courriel, $adresse1, $adresse2, $codePostal, $ville, $estEmploye, $envoyer));
+        // Un bouton d'annulation
+        $this->addElement('reset', 'reset', array(
+            'ignore'   => true,
+            'label'    => 'Annuler',
+        ));
+
+        // Et une protection anti CSRF
+        $this->addElement('hash', 'csrf', array(
+            'ignore' => true,
+        ));
+
+        $this->getElement("submit")->removeDecorator('DtDdWrapper') ;
+        $this->getElement("csrf")->removeDecorator('label') ;
+
+        $elements = array ("prenom", "nom", "courriel", "password", "adresse1", "adresse2", "codePostal", "ville") ;
+
+        foreach ($elements as $element) {
+            $element = $this->getElement($element) ;
+            if ($element!=null) {
+                $element->removeDecorator('htmlTag');
+            }
+        }
     }
-
 }
