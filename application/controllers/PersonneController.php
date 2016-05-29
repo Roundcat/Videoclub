@@ -18,7 +18,10 @@ class PersonneController extends Zend_Controller_Action
 
     public function listeClientAction()
     {
-        // action body
+        $mapper = new Application_Model_PersonneMapper();
+        $client = new Application_Model_Personne();
+        $client = $mapper->obtenirAllClients($id);
+        $this->view->personne = $client->fetchAll();
     }
 
     public function listeEmployeAction()
@@ -32,8 +35,8 @@ class PersonneController extends Zend_Controller_Action
      */
     public function listeAction()
     {
-        // $personnes = new Application_Model_DbTable_Personne();
-        // $this->view->personne = $personnes->fetchAll();
+        // $personne = new Application_Model_Personne();
+        // $this->view->personne = $personne->fetchAll();
     }
 
     /**
