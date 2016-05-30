@@ -10,9 +10,9 @@
         <th>Prénom</th>
 		<th></th>
     </tr>
-<?php foreach($this->client as $client) : ?>
+<?php foreach($this->personne as $client) : ?> <!-- je met $this->personne car dans le controller j'ai utilisé $this->view->personne -->
     <tr>
-        <td><?php echo $this->escape($personne->nom); ?></td>
+        <td><?php echo $this->escape($client->nom); ?></td>
 		<td><?php echo $this->escape($client->prenom); ?></td>
         <td>
             <a href="<?php echo $this->url(array('controller'=>'personne',
