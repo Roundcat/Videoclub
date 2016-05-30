@@ -10,7 +10,7 @@
         <th>Prénom</th>
 		<th></th>
     </tr>
-<?php foreach($this->employe as $employe) : ?>
+<?php foreach($this->personne as $employe) : ?> <!-- je met $this->personne car dans le controller j'ai utilisé $this->view->personne -->
     <tr>
         <td><?php echo $this->escape($employe->nom); ?></td>
 		<td><?php echo $this->escape($employe->prenom); ?></td>
