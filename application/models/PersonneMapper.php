@@ -120,9 +120,8 @@ class Application_Model_PersonneMapper
             'adresse2'          =>  $adresse2,
             'code_postal'       =>  $codePostal,
             'ville'             =>  $ville,
-            'numero_adherent'   =>  $numeroAdherent,
             'motDePasse'        =>  $password,
-            'estEmploye'        =>  $estEmploye
+            'estEmploye'        =>  $estEmploye,
         );
         $this->getDbTable()->update($data, array('id = ?' => $id));
     }
