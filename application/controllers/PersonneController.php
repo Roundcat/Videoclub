@@ -23,7 +23,7 @@ class PersonneController extends Zend_Controller_Action
         $mapper = new Application_Model_PersonneMapper();
         $client = new Application_Model_Personne();
         $client = $mapper->obtenirAllClients();
-        $this->view->personne = $client;
+        $this->view->personne = $client; // déclaration utilisée pour la vue liste-client.phtml
     }
 
     public function listeEmployeAction()
@@ -31,7 +31,7 @@ class PersonneController extends Zend_Controller_Action
         $mapper = new Application_Model_PersonneMapper();
         $employe = new Application_Model_Personne();
         $employe = $mapper->obtenirAllEmployes();
-        $this->view->personne = $employe;
+        $this->view->personne = $employe; // déclaration utilisée pour la vue liste-employe.phtml
     }
 
     /**
