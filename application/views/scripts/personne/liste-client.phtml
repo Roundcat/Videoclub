@@ -1,6 +1,6 @@
 <?php
-$this->title = 'Les clients';
-$this->headTitle($this->title);
+// $this->title = 'Les clients';
+// $this->headTitle($this->title);
 ?>
 <p><a href="<?php echo $this->url(array('controller'=>'personne',
         'action'=>'ajouter'));?>">Ajouter un client</a></p>
@@ -10,12 +10,13 @@ $this->headTitle($this->title);
         <th>Prénom</th>
 		<th></th>
     </tr>
-<?php foreach($this->personne as $personne) : ?>
+<?php foreach($this->personne as $client) : ?> <!-- je met $this->personne car dans le controller j'ai utilisé $this->view->personne -->
     <tr>
-        <td><?php echo $this->escape($personne->nom); ?></td>
-		<td><?php echo $this->escape($personne->prenom); ?></td>
+        <td><?php echo $this->escape($client->nom); ?></td>
+		<td><?php echo $this->escape($client->prenom); ?></td>
         <td>
-            <a href="<?php echo $this->url(array('controller'=>'personne', 'action'=>'modifier', 'id'=>$personne->id));?>">Modifier</a>
+            <a href="<?php echo $this->url(array('controller'=>'personne',
+                'action'=>'modifier', 'id'=>$client->id));?>">Modifier</a>
         </td>
 
     </tr>

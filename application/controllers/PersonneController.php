@@ -3,6 +3,8 @@
 class PersonneController extends Zend_Controller_Action
 {
 
+    protected $_flashMessenger = null;
+
     public function init()
     {
         /* Initialize action controller here */
@@ -20,13 +22,16 @@ class PersonneController extends Zend_Controller_Action
     {
         $mapper = new Application_Model_PersonneMapper();
         $client = new Application_Model_Personne();
-        $client = $mapper->obtenirAllClients($id);
-        $this->view->personne = $client->fetchAll();
+        $client = $mapper->obtenirAllClients();
+        $this->view->personne = $client; // déclaration utilisée pour la vue liste-client.phtml
     }
 
     public function listeEmployeAction()
     {
-        // action body
+        $mapper = new Application_Model_PersonneMapper();
+        $employe = new Application_Model_Personne();
+        $employe = $mapper->obtenirAllEmployes();
+        $this->view->personne = $employe; // déclaration utilisée pour la vue liste-employe.phtml
     }
 
     /**
@@ -35,8 +40,8 @@ class PersonneController extends Zend_Controller_Action
      */
     public function listeAction()
     {
-        // $personne = new Application_Model_Personne();
-        // $this->view->personne = $personne->fetchAll();
+        $mapper = new Application_Model_PersonneMapper();
+        $this->view->entries = $mapper->fetchAll();
     }
 
     /**
@@ -46,51 +51,70 @@ class PersonneController extends Zend_Controller_Action
      */
     public function ajouterAction()
     {
-      // Instanciation de Application_Form_Personne
-    //   $form = new Application_Form_Personne();
-    //   // Affectation au bouton d'envoi le libellé 'Ajouter'
-    //   $form->envoyer->setLabel('Ajouter');
-    //   // Assignation du formulaire à la vue pour l'affichage
-    //   $this->view->form = $form;
-      //
-    //   // Si la méthode isPost() de l'objet de requête renvoie true, alors le formulaire a été envoyé
-    //   if ($this->getRequest()->isPost()) {
-    //     // Récupération des données de la requête avec la méthode getPost()
-    //     $formData = $this->getRequest()->getPost();
-    //     // Vérification que les données de la requête soient valides avec la méthode membre isValid()
-    //     if ($form->isValid($formData)) {
-    //       // Si le formulaire est valide
-    //       // instanciation de la classe modèle Application_Model_DbTable_ActeurRealisateur
-    //       // et utilisation de la méthode ajouterActeurRealisateur() créée dans la classe Application_Model_DbTable_ActeurRealisateur
-    //       // pour créer un nouvel enregistrment dans la base de données
-    //       $nom        = $form->getValue('nom');
-    //       $prenom     = $form->getValue('prenom');
-    //       $password   = $form->getValue('motDePasse');
-    //       $courriel   = $form->getValue('courriel');
-    //       $adresse1   = $form->getValue('adresse1');
-    //       $adresse2   = $form->getValue('adresse2');
-    //       $codePostal = $form->getValue('code_postal');
-    //       $ville      = $form->getValue('ville');
-    //       $estEmploye = $form->getValue('estEmploye');
-    //       $personnes  = new Application_Model_DbTable_Personne();
-    //   $personnes->ajouterPersonne($nom, $prenom, $password, $courriel, $adresse1, $adresse2, $codePostal, $ville, $estEmploye);
-      //
-    //       // Après avoir sauvegardé le nouvel enregistrement d'acteur réalisateur
-    //       // redirection vers l'action index avec l'aide d'action Redirector
-    //       // Ici retour vers la page d'accueil
-    //       $this->_helper->flashMessenger->addMessage('Personne ajoutée correctement');
-    //       $this->_helper->redirector('index');
-    //       // Si les données du formulaire ne sont pas valides
-    //       // nouvel affichage du formulaire avec les données fournies
-    //     } else {
-    //       $form->populate($formData);
-    //     }
-    //   }
+        $request    = $this->getRequest();
+        $form       = new Application_Form_Personne();
+        $form->submit->setLabel('Ajouter');
+
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            if ($form->isValid($formData)) {
+                $personne = new Apllication_Model_Personne($form->getValues());
+                $mapper   = new Application_Model_PersonneMapper();
+                $mapper->ajouterPersonne($prenom, $nom, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye);
+                return $this->_helper->redirector('liste');
+            } else {
+                $form->populate($formData);
+            }
+        }
+
+        $this->view->form = $form;
     }
 
     public function modifierAction()
     {
-        // action body
+        $request = $this->getRequest();
+        $form    = new Application_Form_Personne();
+        $form->submit->setLabel('Modifier');
+
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            if ($form->isValid($formData)) {
+                $id = $this->_getParam('id', 0);
+                $prenom     =   $form->getValue('prenom');
+                $nom        =   $form->getValue('nom');
+                $courriel   =   $form->getValue('courriel');
+                $adresse1   =   $form->getValue('adresse1');
+                $adresse2   =   $form->getValue('adresse2');
+                $codePostal =   $form->getValue('code_postal');
+                $ville      =   $form->getValue('ville');
+                $password   =   $form->getValue('motDePasse');
+                $estEmploye =   $form->getValue('estEmploye');
+                $mapper  = new Application_Model_PersonneMapper();
+                $mapper->modifierPersonne($id, $prenom, $nom, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye);
+                return $this->_helper->redirector('liste');
+            } else {
+                $form->populate($formData);
+            }
+        } else {
+            $id = $this->_getParam('id', 0);
+            if ($id > 0) {
+                $mapper  = new Application_Model_PersonneMapper();
+                $personne = new Application_Model_Personne();
+                $personne = $mapper->obtenirPersonne($id);
+                $form->populate(array(  'prenom'        =>$personne->prenom,
+                                        'nom'           =>$personne->nom,
+                                        'courriel'      =>$personne->courriel,
+                                        'adresse1'      =>$personne->adresse1,
+                                        'adresse2'      =>$personne->adresse2,
+                                        'code_postal'   =>$personne->codePostal,
+                                        'ville'         =>$personne->ville,
+                                        'motDePasse'    =>$personne->password,
+                                        'estEmployé'     =>$personne->estEmploye
+                                     ));
+            }
+        }
+
+        $this->view->form = $form;
     }
 
     public function consulterAction()
