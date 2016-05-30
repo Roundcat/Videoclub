@@ -1,17 +1,19 @@
 <?php
-$this->title = 'Les personnes';
+// $this->title = 'Toutes les personnes';
 $this->headTitle($this->title);
 ?>
+<legend>Toutes les personnes</legend>
+<div class="row">
+    <div class="col-sm-12 col-md-offset-2 col-md-8 col-offset-lg-2 col-lg-6">
 <p><a href="<?php echo $this->url(array('controller'=>'personne',
         'action'=>'ajouter'));?>">Ajouter des personnes</a></p>
 <table>
     <tr>
         <th>Nom</th>
         <th>Prénom</th>
-				<th>Courriel</th>
-				<th></th>
+		<th></th>
     </tr>
-<?php foreach($this->personne as $personne) : ?>
+<?php foreach($this->entries as $personne) : ?>
     <tr>
         <td><?php echo $this->escape($personne->nom); ?></td>
 		<td><?php echo $this->escape($personne->prenom); ?></td>
@@ -23,3 +25,5 @@ $this->headTitle($this->title);
     </tr>
 <?php endforeach; ?>
 </table>
+</div>
+</div>
