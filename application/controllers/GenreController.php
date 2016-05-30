@@ -88,8 +88,8 @@ class GenreController extends Zend_Controller_Action
                 $id = $this->_getParam('id', 0);
                 $mapper  = new Application_Model_GenreMapper();
                 $genre = new Application_Model_Genre();
-                // $genre = $mapper->obtenirGenre($id);
-                // $this->view->genre = $genre;
+                $genre = $mapper->obtenirGenre($id);
+                $this->view->genre = $genre;
             }
     }
 }

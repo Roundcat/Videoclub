@@ -3,11 +3,11 @@ $this->title = "Supprimer un genre";
 $this->headTitle($this->title);
 ?>
 <p>Êtes-vous sûr de vouloir supprimer le genre
-    '<?php echo $this->escape($this->genre['genre']); ?>' ?
+    '<?php echo $this->escape($this->genre->genre); ?>' ?
 </p>
 <form action="<?php echo $this->url(array('action'=>'supprimer')); ?>" method="post">
 <div>
-    <input type="hidden" name="id" value="<?php echo $this->genre['id']; ?>" />
+    <input type="hidden" name="id" value="<?php echo $this->genre->id; ?>" />
     <input type="submit" name="supprimer" value="Oui" />
     <input type="submit" name="supprimer" value="Non" />
 </div>
