@@ -57,14 +57,11 @@ echo $this->doctype(); ?>
                     <li class="dropdown">
                         <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Les personnes<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste')); ?>"><span class="glyphicon glyphicon-list"></span> Tout le monde</a></li>
+                            <!-- <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste')); ?>"><span class="glyphicon glyphicon-list"></span> Tout le monde</a></li> -->
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste-client')); ?>"><span class="glyphicon glyphicon-list"></span> Voir tous les clients</a></li>
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste-employe')); ?>"><span class="glyphicon glyphicon-list"></span> Voir tous les employés</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'ajouter')); ?>"><span class="glyphicon glyphicon-info-plus"></span> Ajouter un compte</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Modifier un compte</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-off"></span> Désactiver une personne</a></li>
                         </ul></li>
                     <li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Les locations</a></li>
                     <ul class="dropdown-menu">
