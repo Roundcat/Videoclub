@@ -20,10 +20,26 @@ class PersonneController extends Zend_Controller_Action
 
     public function listeClientAction()
     {
+        // Configuration du script de navigation. Voyez le tutoriel sur le script
+        // des éléments de contrôle de la pagination pour plus d'informations
+        Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+
         $mapper = new Application_Model_PersonneMapper();
         $client = new Application_Model_Personne();
         $client = $mapper->obtenirAllClients();
-        $this->view->personne = $client; // déclaration utilisée pour la vue liste-client.phtml
+
+        // Créons un paginateur pour cette requête
+        $paginator = Zend_Paginator::factory($client);
+
+        // Nous lisons le numéro de page depuis la requête. Si le paramètre n'est pas précisé
+        // la valeur 1 sera utilisée par défaut
+        $paginator->setCurrentPageNumber($this->_getParam('page', 1));
+
+
+        // Assignons enfin l'objet Paginator à notre vue
+        $this->view->paginator = $paginator;
+
+        // $this->view->personne = $client; // déclaration utilisée pour la vue liste-client.phtml
     }
 
     public function listeEmployeAction()
@@ -85,6 +101,11 @@ class PersonneController extends Zend_Controller_Action
         $this->view->form = $form;
     }
 
+    /**
+     * Action : Modifie une personne en base
+     * Form : Application_Form_Personne
+     * View : personne/modifier
+     */
     public function modifierAction()
     {
         $request = $this->getRequest();
@@ -116,6 +137,7 @@ class PersonneController extends Zend_Controller_Action
                 $mapper  = new Application_Model_PersonneMapper();
                 $personne = new Application_Model_Personne();
                 $personne = $mapper->obtenirPersonne($id);
+
                 $form->populate(array(  'prenom'        =>$personne->prenom,
                                         'nom'           =>$personne->nom,
                                         'courriel'      =>$personne->courriel,
@@ -124,12 +146,41 @@ class PersonneController extends Zend_Controller_Action
                                         'code_postal'   =>$personne->codePostal,
                                         'ville'         =>$personne->ville,
                                         'motDePasse'    =>$personne->password,
-                                        'estEmployé'     =>$personne->estEmploye
+                                        'estEmployé'    =>$personne->estEmploye
                                      ));
             }
         }
 
         $this->view->form = $form;
+    }
+
+    public function detailAction()
+    {
+        $request = $this->getRequest();
+
+        if ($this->getRequest()->isPost()) {
+
+
+            $id = $this->_getParam('id', 0);
+            if ($id > 0) {
+                $mapper  = new Application_Model_PersonneMapper();
+                $personne = new Application_Model_Personne();
+                $personne = $mapper->obtenirPersonne($id);
+
+                $form->populate(array(  'prenom'        =>$personne->prenom,
+                                        'nom'           =>$personne->nom,
+                                        'courriel'      =>$personne->courriel,
+                                        'adresse1'      =>$personne->adresse1,
+                                        'adresse2'      =>$personne->adresse2,
+                                        'code_postal'   =>$personne->codePostal,
+                                        'ville'         =>$personne->ville,
+                                        'motDePasse'    =>$personne->password,
+                                        'estEmployé'    =>$personne->estEmploye
+                                     ));
+            }
+        }
+
+        $this->view->personne = $detail;
     }
 
     public function consulterAction()
