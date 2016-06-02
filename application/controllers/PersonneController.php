@@ -183,11 +183,6 @@ class PersonneController extends Zend_Controller_Action
         $this->view->personne = $detail;
     }
 
-    public function consulterAction()
-    {
-        // action body
-    }
-
     public function desactiveAction()
     {
         // action body
