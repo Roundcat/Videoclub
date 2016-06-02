@@ -1,4 +1,15 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Personne</b> and script/action name <b>desactive</b></p>
+<?php
+$this->title = "Désactiver un compte";
+$this->headTitle($this->title);
+?>
+<p>Êtes-vous sûr de vouloir désactiver le compte pour
+    ' <?php echo $this->escape($this->personne->prenom); ?>
+	<?php echo $this->escape($this->personne->nom); ?> ' ?
+</p>
+<form action="<?php echo $this->url(array('action'=>'desactiver')); ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo $this->personne->id; ?>" />
+    <input type="submit" name="supprimer" value="Oui" />
+    <input type="submit" name="supprimer" value="Non" />
 </div>
+</form>
