@@ -18,6 +18,10 @@ class PersonneController extends Zend_Controller_Action
         // action body
     }
 
+    /**
+     * Action : Affiche tous les clients présents en base
+     * View : personne/liste-client
+     */
     public function listeClientAction()
     {
         // Configuration du script de navigation. Voyez le tutoriel sur le script
@@ -35,19 +39,34 @@ class PersonneController extends Zend_Controller_Action
         // la valeur 1 sera utilisée par défaut
         $paginator->setCurrentPageNumber($this->_getParam('page', 1));
 
+        // Assignons enfin l'objet Paginator à notre vue
+        $this->view->paginator = $paginator;
+
+    }
+
+    /**
+     * Action : Affiche tous les employés présents en base
+     * View : personne/liste-employe
+     */
+    public function listeEmployeAction()
+    {
+        // Configuration du script de navigation. Voyez le tutoriel sur le script
+        // des éléments de contrôle de la pagination pour plus d'informations
+        Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+
+        $mapper = new Application_Model_PersonneMapper();
+        $employe = new Application_Model_Personne();
+        $employe = $mapper->obtenirAllEmployes();
+        // Créons un paginateur pour cette requête
+        $paginator = Zend_Paginator::factory($employe);
+
+        // Nous lisons le numéro de page depuis la requête. Si le paramètre n'est pas précisé
+        // la valeur 1 sera utilisée par défaut
+        $paginator->setCurrentPageNumber($this->_getParam('page', 1));
 
         // Assignons enfin l'objet Paginator à notre vue
         $this->view->paginator = $paginator;
 
-        // $this->view->personne = $client; // déclaration utilisée pour la vue liste-client.phtml
-    }
-
-    public function listeEmployeAction()
-    {
-        $mapper = new Application_Model_PersonneMapper();
-        $employe = new Application_Model_Personne();
-        $employe = $mapper->obtenirAllEmployes();
-        $this->view->personne = $employe; // déclaration utilisée pour la vue liste-employe.phtml
     }
 
     /**
@@ -156,36 +175,34 @@ class PersonneController extends Zend_Controller_Action
 
     public function detailAction()
     {
-        $request = $this->getRequest();
+        var_dump('1');
+        $mapper = new Application_Model_PersonneMapper();
+        $detail = new Application_Model_Personne(); var_dump($this->_getParam('id', 0));
+        $id = $this->_getParam('id', 0);
+        $detail = $mapper->obtenirPersonne($id);
 
-        if ($this->getRequest()->isPost()) {
-
-
-            $id = $this->_getParam('id', 0);
-            if ($id > 0) {
-                $mapper  = new Application_Model_PersonneMapper();
-                $personne = new Application_Model_Personne();
-                $personne = $mapper->obtenirPersonne($id);
-
-                $form->populate(array(  'prenom'        =>$personne->prenom,
-                                        'nom'           =>$personne->nom,
-                                        'courriel'      =>$personne->courriel,
-                                        'adresse1'      =>$personne->adresse1,
-                                        'adresse2'      =>$personne->adresse2,
-                                        'code_postal'   =>$personne->codePostal,
-                                        'ville'         =>$personne->ville,
-                                        'motDePasse'    =>$personne->password,
-                                        'estEmployé'    =>$personne->estEmploye
-                                     ));
-            }
-        }
-
-        $this->view->personne = $detail;
+        $this->view->personne = $detail; // déclaration utilisée pour la vue detail.phtml
     }
 
     public function desactiveAction()
     {
-        // action body
+        if ($this->getRequest()->isPost()) {
+            $desactiver = $this->getRequest()->getPost('desactiver');
+            if ($desactiver == 'Oui') {
+                $id = $this->_getParam('id', 0);
+                $mapper = new Application_Model_PersonneMapper();
+                $personne = new Application_Model_Personne();
+                $personne = $mapper->desactiverPersonne($id);
+            }
+            $this->_helper->redirector('liste');
+            } else {
+                $id = $this->_getParam('id', 0);
+                $mapper  = new Application_Model_PersonneMapper();
+                $personne = new Application_Model_Personne();
+                $personne = $mapper->obtenirPersonne($id);
+                
+                $this->view->personne = $personne;
+            }
     }
 
     public function rechercherAction()
