@@ -54,13 +54,28 @@ class PersonneController extends Zend_Controller_Action
         $request    = $this->getRequest();
         $form       = new Application_Form_Personne();
         $form->submit->setLabel('Ajouter');
-
-        if ($this->getRequest()->isPost()) {
+        if ($request->isPost()) {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
-                $personne = new Apllication_Model_Personne($form->getValues());
+                $personne = new Application_Model_Personne($form->getValues());
+
+                // génération du numéro d'adhérent
+                $t = time();
+                $r = rand(10,99);
+                $numeroAdherent = $t.$r;
+                // ajout du numéro d'adhérent à l'objet personne
+                $personne->setNumeroAdherent($numeroAdherent);
+
+                // ajout de la date création à l'objet personne
+                $date = date("Y-m-d");
+                $personne->setDateCreation($date);
+
+                // mise à 0 de la désactivation
+                $desactive = 0;
+                $personne->setDesactive($desactive);
+
                 $mapper   = new Application_Model_PersonneMapper();
-                $mapper->ajouterPersonne($prenom, $nom, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye);
+                $test = $mapper->ajouterPersonne($personne);
                 return $this->_helper->redirector('liste');
             } else {
                 $form->populate($formData);
