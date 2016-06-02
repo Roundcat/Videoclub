@@ -37,6 +37,7 @@
           <actionMethod actionName="liste"/>
           <actionMethod actionName="listeClient"/>
           <actionMethod actionName="listeEmploye"/>
+          <actionMethod actionName="detail"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
@@ -139,6 +140,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Personne">
             <viewScriptFile forActionName="listeEmploye"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Personne">
+            <viewScriptFile forActionName="detail"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
