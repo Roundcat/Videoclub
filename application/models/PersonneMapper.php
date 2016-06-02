@@ -147,19 +147,26 @@ class Application_Model_PersonneMapper
         }*/
     }
 
-    public function modifierPersonne($id, $prenom, $nom/*, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye*/)
+    public function modifierPersonne($id, $prenom, $nom, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye)
     {
         $data = array(
             'prenom'            =>  $prenom,
             'nom'               =>  $nom,
-            // 'courriel'          =>  $courriel,
-            // 'adresse1'          =>  $adresse1,
-            // 'adresse2'          =>  $adresse2,
-            // 'code_postal'       =>  $codePostal,
-            // 'ville'             =>  $ville,
-            // 'motDePasse'        =>  $password,
-            // 'estEmploye'        =>  $estEmploye,
+            'courriel'          =>  $courriel,
+            'adresse1'          =>  $adresse1,
+            'adresse2'          =>  $adresse2,
+            'code_postal'       =>  $codePostal,
+            'ville'             =>  $ville,
+            'motDePasse'        =>  $password,
+            'estEmploye'        =>  $estEmploye,
         );
         $this->getDbTable()->update($data, array('id = ?' => $id));
+    }
+
+    public function desactiverPersonne($id)
+    {
+        $sql = "UPDATE  personne
+                SET     desactive = 1
+                WHERE   id = " . (int)$id . ";";
     }
 }
