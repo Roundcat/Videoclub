@@ -38,7 +38,15 @@ class Application_Model_PersonneMapper
         if($row){
             $personne = new Application_Model_Personne();
             $personne->setId($row['id']);
+            $personne->setPrenom($row['prenom']);
             $personne->setNom($row['nom']);
+            $personne->setCourriel($row['courriel']);
+            $personne->setAdresse1($row['adresse1']);
+            $personne->setAdresse2($row['adresse2']);
+            $personne->setCodePostal($row['code_postal']);
+            $personne->setVille($row['ville']);
+            $personne->setPassword($row['motDePasse']);
+            $personne->setEstEmploye($row['estEmploye']);
 
             return $personne;
         }
