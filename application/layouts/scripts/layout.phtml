@@ -15,16 +15,17 @@ echo $this->doctype(); ?>
     <?php echo $this->headMeta() ; ?>
     <?php echo $this->headTitle() ; ?>
     <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/bootstrap/css/bootstrap.css')
-                                ->headLink(array('rel' => 'icon', 'href' => '/img/favicon.ico'), 'PREPEND') ; ?>
+                                ->headLink(array('rel' => 'icon', 'href' => '/img/favicon.ico'), 'PREPEND')
+                                ->headLink(array('rel' => 'stylesheet', 'type' => 'text/css', 'href' => 'https://fonts.googleapis.com/css?family=Oswald')) ; ?>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <header class="row" id="page_header">
             <!-- logo du site -->
             <div class="col-sm-4 col-md-offset-2 col-md-3 col-lg-offset-2 col-lg-3" id="logo">
                 <a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'index')); ?>" style="text-decoration:none">
-                    <img src="<?php echo $this->baseUrl().'/img/logo.jpg' ; ?>" alt="logo" />
+                    <!-- <img src="<?php echo $this->baseUrl().'/img/logo.jpg' ; ?>" alt="logo" /> -->
                 </a>
             </div>
             <!-- nom du site -->
@@ -36,7 +37,7 @@ echo $this->doctype(); ?>
 
         <div class="row" id="bar"></div>
 
-        <div id="bodyblock">
+        <div class="container-fluid">
 
             <nav class="navbar navbar-inverse" id="menu_videoclub">
                 <div class="container-fluid">
@@ -62,9 +63,6 @@ echo $this->doctype(); ?>
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste-employe')); ?>"><span class="glyphicon glyphicon-list"></span> Voir tous les employés</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'ajouter')); ?>"><span class="glyphicon glyphicon-info-plus"></span> Ajouter un compte</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Modifier un compte</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-off"></span> Désactiver une personne</a></li>
                         </ul></li>
                     <li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Les locations</a></li>
                     <ul class="dropdown-menu">
@@ -89,7 +87,6 @@ echo $this->doctype(); ?>
           </div>
 
         </div>
-
         <!-- pied de page -->
         <div class="container">
             <footer class="row" id="page_footer">
