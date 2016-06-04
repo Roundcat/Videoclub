@@ -6,19 +6,25 @@
         'action'=>'ajouter'));?>">Ajouter un client</a></p>
 <table>
     <tr>
+        <th>Numéro d'adhérent</th>
         <th>Nom</th>
         <th>Prénom</th>
 		<th></th>
     </tr>
-<?php foreach($this->personne as $client) : ?> <!-- je met $this->personne car dans le controller j'ai utilisé $this->view->personne -->
+<?php foreach($this->paginator as $client) : ?> <!-- je met $this->personne car dans le controller j'ai utilisé $this->view->personne -->
     <tr>
+        <td><?php echo $this->escape($client->numeroAdherent); ?></td>
         <td><?php echo $this->escape($client->nom); ?></td>
 		<td><?php echo $this->escape($client->prenom); ?></td>
         <td>
             <a href="<?php echo $this->url(array('controller'=>'personne',
                 'action'=>'modifier', 'id'=>$client->id));?>">Modifier</a>
+            &nbsp|&nbsp
+            <a href="<?php echo $this->url(array('controller'=>'personne',
+               'action'=>'detail', 'id'=>$client->id));?>">Détails</a>
         </td>
 
     </tr>
 <?php endforeach; ?>
 </table>
+<?php echo $this->paginator; ?>

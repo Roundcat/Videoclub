@@ -13,9 +13,10 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Prénom : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'Alpha',
-                                                        'StringLength', true, 'options' => array(1, 45))
+            'validators'    =>  array(array('validator' =>  'NotEmpty',
+                                                            'Alpha',
+                                                            'options' => array('size' => '45'))),
+                                                            /*'StringLength', true, 'options' => array(1, 45))),*/
         ));
 
         // Un élément nom
@@ -23,9 +24,10 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Nom : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'Alpha',
-                                                        'StringLength', true, 'options' => array(1, 45))
+            'validators'    =>  array(array('validator' =>  'NotEmpty',
+                                                            'Alpha',
+                                                            'options' => array('size' => '45'))),
+                                                            /*'StringLength', true, 'options' => array(1, 45))),*/
         ));
 
         // Un élément courriel
@@ -33,9 +35,9 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Adresse email : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'EmailAddress',
-                                                        'StringLength', true, 'options' => array(6,50))
+            'validators'    =>  array(array('validator' =>    'NotEmpty',
+                                                        'EmailAddress',))
+                                                        // 'StringLength', true, 'options' => array(6,50))),
         ));
 
         // Un élément password
@@ -43,8 +45,8 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Mot de passe : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'StringLength', true, 'options' => array(6, 12))
+            'validators'    =>  array(array('validator' =>    'NotEmpty',))
+                                                        // 'StringLength', true, 'options' => array(6, 12))),
         ));
 
         // Un élément addresse1
@@ -52,8 +54,8 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Adresse principale : ',
             'required'      =>  false,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'StringLength', true, 'options' => array(0, 100))
+            'validators'    =>  array(array('validator' =>    'NotEmpty',))
+                                                        // 'StringLength', true, 'options' => array(0, 100))),
         ));
 
         // Un élément addresse2
@@ -61,8 +63,8 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Suite de l\'adresse : ',
             'required'      =>  false,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'StringLength', true, 'options' => array(0, 100))
+            'validators'    =>  array(array('validator' =>    'NotEmpty',))
+                                                        // 'StringLength', true, 'options' => array(0, 100))),
         ));
 
         // Un élément code postal
@@ -70,8 +72,9 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Code postal : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'StringLength', true, 'options' => array(5, 5))
+            'validators'    =>  array(array('validator' =>    'NotEmpty',
+                                                                'options' => array(5, 5))),
+                                                        // 'StringLength', true, 'options' => array(5, 5))),
         ));
 
         // Un élément ville
@@ -79,9 +82,9 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Ville : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            'validators'    =>  array('validator' =>    'NotEmpty',
-                                                        'Alpha',
-                                                        'StringLength', true, 'options' => array(0, 100))
+            'validators'    =>  array(array('validator' =>    'NotEmpty',
+                                                        'Alpha',))
+                                                        // 'StringLength', true, 'options' => array(0, 100))),
         ));
 
         // Un élément estEmployé
@@ -91,7 +94,6 @@ class Application_Form_Personne extends Zend_Form
             'checked_value'     =>  '1',
             'unchecked_value'   =>  '0'
         ));
-
 
         // Un bouton d'envoi
         $this->addElement('submit', 'submit', array(
@@ -113,7 +115,7 @@ class Application_Form_Personne extends Zend_Form
         $this->getElement("submit")->removeDecorator('DtDdWrapper') ;
         $this->getElement("csrf")->removeDecorator('label') ;
 
-        $elements = array ("prenom", "nom", "courriel", "password", "adresse1", "adresse2", "codePostal", "ville") ;
+        $elements = array ("prenom", "nom", "courriel", "password", "adresse1", "adresse2", "codePostal", "ville", "estEmploye") ;
 
         foreach ($elements as $element) {
             $element = $this->getElement($element) ;

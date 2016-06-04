@@ -9,12 +9,14 @@ $this->headTitle($this->title);
         'action'=>'ajouter'));?>">Ajouter des personnes</a></p>
 <table>
     <tr>
+        <th>Numéro d'adhérent</th>
         <th>Nom</th>
         <th>Prénom</th>
 		<th></th>
     </tr>
 <?php foreach($this->entries as $personne) : ?>
     <tr>
+        <td><?php echo $this->escape($personne->numeroAdherent); ?></td>
         <td><?php echo $this->escape($personne->nom); ?></td>
 		<td><?php echo $this->escape($personne->prenom); ?></td>
         <td>

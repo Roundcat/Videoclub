@@ -38,7 +38,15 @@ class Application_Model_PersonneMapper
         if($row){
             $personne = new Application_Model_Personne();
             $personne->setId($row['id']);
+            $personne->setPrenom($row['prenom']);
             $personne->setNom($row['nom']);
+            $personne->setCourriel($row['courriel']);
+            $personne->setAdresse1($row['adresse1']);
+            $personne->setAdresse2($row['adresse2']);
+            $personne->setCodePostal($row['code_postal']);
+            $personne->setVille($row['ville']);
+            $personne->setPassword($row['motDePasse']);
+            $personne->setEstEmploye($row['estEmploye']);
 
             return $personne;
         }
@@ -52,6 +60,7 @@ class Application_Model_PersonneMapper
         $sql = "SELECT  id
                         , prenom
                         , nom
+                        , numero_adherent
                 FROM    personne
                 WHERE   estemploye = 0
                 ORDER BY nom ASC, prenom ASC;";
@@ -64,7 +73,8 @@ class Application_Model_PersonneMapper
             $client = new Application_Model_Personne();
             $client ->setId($row['id'])
                     ->setPrenom($row['prenom'])
-                    ->setNom($row['nom']);
+                    ->setNom($row['nom'])
+                    ->setNumeroAdherent($row['numero_adherent']);
 
             $tab[] = $client;
         }
@@ -76,6 +86,7 @@ class Application_Model_PersonneMapper
         $sql = "SELECT  id
                         , prenom
                         , nom
+                        , numero_adherent
                 FROM    personne
                 WHERE   estemploye = 1
                 ORDER BY nom ASC, prenom ASC;";
@@ -88,7 +99,8 @@ class Application_Model_PersonneMapper
             $employe = new Application_Model_Personne();
             $employe ->setId($row['id'])
                     ->setPrenom($row['prenom'])
-                    ->setNom($row['nom']);
+                    ->setNom($row['nom'])
+                    ->setNumeroAdherent($row['numero_adherent']);
 
             $tab[] = $employe;
         }
@@ -102,12 +114,37 @@ class Application_Model_PersonneMapper
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Personne();
             $entry->setId($row->id)
+                  ->setNumeroAdherent($row['numero_adherent'])
                   ->setPrenom($row->prenom)
                   ->setNom($row->nom)
                   ->setEstEmploye($row->estEmploye);
             $entries[] = $entry;
         }
         return $entries;
+    }
+
+    public function ajouterPersonne(Application_Model_Personne $personne)
+    {
+        $data = array(
+            'prenom'        =>  $personne->getPrenom(),
+            'nom'           =>  $personne->getNom(),
+            'courriel'      =>  $personne->getCourriel(),
+            'motDePasse'    =>  $personne->getPassword(),
+            'adresse1'      =>  $personne->getAdresse1(),
+            'adresse2'      =>  $personne->getAdresse2(),
+            'code_postal'   =>  $personne->getCodePostal(),
+            'ville'         =>  $personne->getVille(),
+            'estEmploye'    =>  $personne->getEstEmploye(),
+            'desactive'    =>  $personne->getDesactive(),
+            'date_creation'    =>  $personne->getDateCreation(),
+            'numero_adherent'    =>  $personne->getNumeroAdherent(),
+        );
+        if (null === ($id = $personne->getId())) {
+            unset($data['id']);
+            $this->getDbTable()->insert($data);
+        } /*else {
+            $this->getDbTable()->update($data, array('id = ?' => $id));
+        }*/
     }
 
     public function modifierPersonne($id, $prenom, $nom, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye)
@@ -124,5 +161,12 @@ class Application_Model_PersonneMapper
             'estEmploye'        =>  $estEmploye,
         );
         $this->getDbTable()->update($data, array('id = ?' => $id));
+    }
+
+    public function desactiverPersonne($id)
+    {
+        $sql = "UPDATE  personne
+                SET     desactive = 1
+                WHERE   id = " . (int)$id . ";";
     }
 }

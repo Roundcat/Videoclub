@@ -166,13 +166,13 @@ class Application_Model_Personne
         return $this->_numeroAdherent;
     }
 
-    public function setPassoword($password)
+    public function setPassword($password)
     {
         $this->_password = (string) $password;
         return $this;
     }
 
-    public function getPassoword()
+    public function getPassword()
     {
         return $this->_password;
     }
