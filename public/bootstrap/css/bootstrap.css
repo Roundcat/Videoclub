@@ -4173,6 +4173,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
+  margin-left: -30px;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -6795,7 +6796,7 @@ button.close {
     background: #03ABD2;
     border-color: #03ABD2;
     color: #fff;
-    width: 100vw;
+    margin-right: -30px;
 }
 
 menu_videoclub,
