@@ -6,14 +6,14 @@ $this->headTitle($this->title);
         'action'=>'ajouter'));?>">Ajouter de nouveaux genres</a></p>
 
 <div class="row">
-    <div class="col-sm-12 col-md-offset-4 col-md-8">
+    <div class="col-sm-12 col-md-offset-5 col-md-7">
         <table>
             <tr>
-                <th>Genre</th>
+                <th>Genres</th>
                 <th></th>
             </tr>
         <?php
-        foreach($this->entries as $genre) : ?>
+        foreach($this->paginator as $genre) : ?>
             <tr>
                 <td><?php echo $this->escape($genre->genre);?></td>
 
@@ -21,8 +21,6 @@ $this->headTitle($this->title);
                     <a href="<?php echo $this->url(array('controller'=>'genre',
                         'action'=>'modifier', 'id'=>$genre->id));?>">Modifier</a>
 
-                    <a href="<?php echo $this->url(array('controller'=>'genre',
-                        'action'=>'supprimer', 'id'=>$genre->id));?>">Supprimer</a>
                 </td>
 
             </tr>

@@ -18,8 +18,22 @@ class GenreController extends Zend_Controller_Action
 
     public function listeAction()
     {
+        // Configuration du script de navigation. Voyez le tutoriel sur le script
+        // des éléments de contrôle de la pagination pour plus d'informations
+        Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+
         $mapper = new Application_Model_GenreMapper();
-        $this->view->entries = $mapper->fetchAll();
+        $genre = new Application_Model_Genre();
+        $genre = $mapper->fetchAll();
+        // Créons un paginateur pour cette requête
+        $paginator = Zend_Paginator::factory($genre);
+
+        // Nous lisons le numéro de page depuis la requête. Si le paramètre n'est pas précisé
+        // la valeur 1 sera utilisée par défaut
+        $paginator->setCurrentPageNumber($this->_getParam('page', 1));
+
+        // Assignons enfin l'objet Paginator à notre vue
+        $this->view->paginator = $paginator;
     }
 
     public function ajouterAction()
