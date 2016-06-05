@@ -5,21 +5,26 @@ $this->headTitle($this->title);
 <!-- afficher le lien pour ajouter un acteur ou un réalisateur -->
 <p><a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
         'action'=>'ajouter'));?>">Ajouter un acteur ou un réalisateur</a></p>
-<table>
-    <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th></th>
-    </tr>
-<?php foreach($this->acteurRealisateur as $acteurRealisateur) : ?>
-    <tr>
-        <td><?php echo $this->escape($acteurRealisateur->nom) ;?></td>
-        <td><?php echo $this->escape($acteurRealisateur->prenom) ;?></td>
-        <td>
-            <a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
-                'action'=>'modifier', 'id'=>$acteurRealisateur->id));?>">Modifier</a>
-        </td>
+<div class="row">
+    <div class="col-sm-12 col-md-offset-4 col-md-8">
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th></th>
+            </tr>
+        <?php foreach($this->acteurRealisateur as $acteurRealisateur) : ?>
+            <tr>
+                <td><?php echo $this->escape($acteurRealisateur->nom) ;?></td>
+                <td><?php echo $this->escape($acteurRealisateur->prenom) ;?></td>
+                <td>
+                    <a href="<?php echo $this->url(array('controller'=>'acteurRealisateur',
+                        'action'=>'modifier', 'id'=>$acteurRealisateur->id));?>">Modifier</a>
+                </td>
 
-    </tr>
-<?php endforeach; ?>
-</table>
+            </tr>
+        <?php endforeach; ?>
+        </table>
+    </div>
+</div>
+<?php echo $this->paginator; ?>

@@ -4,24 +4,30 @@ $this->headTitle($this->title);
 ?>
 <p><a href="<?php echo $this->url(array('controller'=>'genre',
         'action'=>'ajouter'));?>">Ajouter de nouveaux genres</a></p>
-<table>
-    <tr>
-        <th>Genre</th>
-        <th></th>
-    </tr>
-<?php
-foreach($this->entries as $genre) : ?>
-    <tr>
-        <td><?php echo $this->escape($genre->genre);?></td>
 
-        <td>
-            <a href="<?php echo $this->url(array('controller'=>'genre',
-                'action'=>'modifier', 'id'=>$genre->id));?>">Modifier</a>
+<div class="row">
+    <div class="col-sm-12 col-md-offset-4 col-md-8">
+        <table>
+            <tr>
+                <th>Genre</th>
+                <th></th>
+            </tr>
+        <?php
+        foreach($this->entries as $genre) : ?>
+            <tr>
+                <td><?php echo $this->escape($genre->genre);?></td>
 
-            <a href="<?php echo $this->url(array('controller'=>'genre',
-                'action'=>'supprimer', 'id'=>$genre->id));?>">Supprimer</a>
-        </td>
+                <td>
+                    <a href="<?php echo $this->url(array('controller'=>'genre',
+                        'action'=>'modifier', 'id'=>$genre->id));?>">Modifier</a>
 
-    </tr>
-<?php endforeach; ?>
-</table>
+                    <a href="<?php echo $this->url(array('controller'=>'genre',
+                        'action'=>'supprimer', 'id'=>$genre->id));?>">Supprimer</a>
+                </td>
+
+            </tr>
+        <?php endforeach; ?>
+        </table>
+    </div>
+</div>
+<?php echo $this->paginator; ?>
