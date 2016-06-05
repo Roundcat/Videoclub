@@ -45,38 +45,23 @@ class ActeurRealisateurController extends Zend_Controller_Action
      */
     public function ajouterAction()
     {
-        // Instanciation de Application_Form_ActeurRealisateur
-        $form = new Application_Form_ActeurRealisateur();
-        // Affectation au bouton d'envoi le libellé 'Ajouter'
-        $form->envoyer->setLabel('Ajouter');
-        // Assignation du formulaire à la vue pour l'affichage
-        $this->view->form = $form;
+        $request    = $this->getRequest();
+        $form       = new Application_Form_ActeurRealisateur();
+        $form->submit->setLabel('Ajouter');
+        if ($request->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            if ($form->isValid($formData)) {
+                $acteurRealisateur = new Application_Model_ActeurRealisateur($form->getValues());
 
-        // Si la méthode isPost() de l'objet de requête renvoie true, alors le formulaire a été envoyé
-        if ($this->getRequest()->isPost()) {
-          // Récupération des données de la requête avec la méthode getPost()
-          $formData = $this->getRequest()->getPost();
-          // Vérification que les données de la requête soient valides avec la méthode membre isValid()
-          if ($form->isValid($formData)) {
-            // Si le formulaire est valide
-            // instanciation de la classe modèle Application_Model_DbTable_ActeurRealisateur
-            // et utilisation de la méthode ajouterActeurRealisateur() créée dans la classe Application_Model_DbTable_ActeurRealisateur
-            // pour créer un nouvel enregistrment dans la base de données
-            $nom      = $form->getValue('nom');
-            $prenom   = $form->getValue('prenom');
-            $acteurRealisateurs = new Application_Model_DbTable_ActeurRealisateur();
-            $acteurRealisateurs->ajouterActeurRealisateur($nom, $prenom);
-
-            // Après avoir sauvegardé le nouvel enregistrement d'acteur réalisateur
-            // redirection vers l'action index avec l'aide d'action Redirector
-            // Ici retour vers la page d'accueil
-            $this->_helper->redirector('index');
-            // Si les données du formulaire ne sont pas valides
-            // nouvel affichage du formulaire avec les données fournies
-          } else {
-            $form->populate($formData);
-          }
+                $mapper   = new Application_Model_ActeurRealisateurMapper();
+                $test = $mapper->ajouterActeurRealisateur($acteurRealisateur);
+                return $this->_helper->redirector('liste');
+            } else {
+                $form->populate($formData);
+            }
         }
+
+        $this->view->form = $form;
     }
 
     /**
@@ -86,48 +71,35 @@ class ActeurRealisateurController extends Zend_Controller_Action
      */
     public function modifierAction()
     {
-      // Instanciation de Application_Form_ActeurRealisateur
-      $form = new Application_Form_ActeurRealisateur();
-      // Affectation au bouton d'envoi le libellé 'Sauvegarder'
-      $form->envoyer->setLabel('Sauvegarder');
-      // Assignation du formulaire à la vue pour l'affichage
-      $this->view->form = $form;
+        $request = $this->getRequest();
+        $form    = new Application_Form_ActeurRealisateur();
+        $form->submit->setLabel('Modifier');
 
-      // Si la méthode isPost() de l'objet de requête renvoie true, alors le formulaire a été envoyé
-      if ($this->getRequest()->isPost()) {
-          // Récupération des données de la requête avec la méthode getPost()
-          $formData = $this->getRequest()->getPost();
-          // Vérification que les données de la requête soient valides avec la méthode membre isValid()
-              if ($form->isValid($formData)) {
-                  // Si le formulaire est valide
-                  // instanciation de la classe modèle Application_Model_DbTable_ActeurRealisateur
-                  // et utilisation de la méthode modifierActeurRealisateur() créée dans la classe Application_Model_DbTable_ActeurRealisateur
-                  // pour sauvegarder les données sur le bon enregistrement dans la base de données
-                  $id       = $form->getValue('id');
-                  $nom      = $form->getValue('nom');
-                  $prenom   = $form->getValue('prenom');
-                  $acteurRealisateurs = new Application_Model_DbTable_ActeurRealisateur();
-                  $acteurRealisateurs->modifierActeurRealisateur($id, $nom, $prenom);
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            if ($form->isValid($formData)) {
+                $id = $this->_getParam('id', 0);
+                $prenom     =   $form->getValue('prenom');
+                $nom        =   $form->getValue('nom');
+                $mapper  = new Application_Model_ActeurRealisateurMapper();
+                $mapper->modifierActeurRealisateur($id, $prenom, $nom);
+                return $this->_helper->redirector('liste');
+            } else {
+                $form->populate($formData);
+            }
+        } else {
+            $id = $this->_getParam('id', 0);
+            if ($id > 0) {
+                $mapper  = new Application_Model_ActeurRealisateurMapper();
+                $acteurRealisateur = new Application_Model_ActeurRealisateur();
+                $acteurRealisateur = $mapper->obtenirActeurRealisateur($id);
 
-                  // Après avoir sauvegardé le nouvel enregistrement d'acteur réalisateur
-                  // redirection vers l'action index avec l'aide d'action Redirector
-                  // Ici retour vers la page d'accueil
-                  $this->_helper->redirector('index');
-                  // Si les données du formulaire ne sont pas valides
-                  // nouvel affichage du formulaire avec les données fournies
-              } else {
-                  $form->populate($formData);
-              }
-      } else {
-        // Récupération de l'id de la requête en utilisant la méthode _getParam()
-        // Ensuite utilisation du modèle pour récupérer l'enregistrement de la abse de données
-        // et remplir le formulaire directement avec les données de l'enregistrement
-          $id = $this->_getParam('id', 0);
-          if ($id > 0) {
-              $acteurRealisateurs = new Application_Model_DbTable_ActeurRealisateur();
-              $form->populate($acteurRealisateurs->obtenirActeurRealisateur($id));
-          }
-      }
+                $form->populate(array(  'prenom'  =>$acteurRealisateur->prenom,
+                                        'nom'     =>$acteurRealisateur->nom
+                                     ));
+            }
+        }
+
+        $this->view->form = $form;
     }
-
 }
