@@ -56,13 +56,13 @@ class Application_Model_ActeurRealisateur
         return $this->_nom;
     }
 
-    public function setprenom($prenom)
+    public function setPrenom($prenom)
     {
         $this->_prenom = (string) $prenom;
         return $this;
     }
 
-    public function getprenom()
+    public function getPrenom()
     {
         return $this->_prenom;
     }
