@@ -185,7 +185,7 @@ table {
 }
 td,
 th {
-  padding: 0;
+  padding: 5px 30px 5px 0px;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
@@ -6787,7 +6787,7 @@ button.close {
 }
 
 #bar {
-    height: 2vh;
+    height: 2vw;
     background: #32342F;
     padding: 0;
 }
@@ -6797,6 +6797,7 @@ button.close {
     border-color: #03ABD2;
     color: #fff;
     margin-right: -30px;
+    height: 4vw;
 }
 
 menu_videoclub,
@@ -6821,6 +6822,12 @@ menu_videoclub,
 .navbar-inverse .navbar-nav > li > a:focus {
   color: #EB7F00;
   background-color: transparent;
+}
+
+/* pagination des listes */
+#pagination_list {
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 /* Bouton */
