@@ -111,7 +111,7 @@ class PersonneController extends Zend_Controller_Action
 
                 $mapper   = new Application_Model_PersonneMapper();
                 $test = $mapper->ajouterPersonne($personne);
-                return $this->_helper->redirector('liste');
+                return $this->_helper->redirector('index', 'Index');
             } else {
                 $form->populate($formData);
             }
@@ -146,7 +146,7 @@ class PersonneController extends Zend_Controller_Action
                 $estEmploye =   $form->getValue('estEmploye');
                 $mapper  = new Application_Model_PersonneMapper();
                 $mapper->modifierPersonne($id, $prenom, $nom, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye);
-                return $this->_helper->redirector('liste');
+                return $this->_helper->redirector('index', 'Index');
             } else {
                 $form->populate($formData);
             }
@@ -156,7 +156,6 @@ class PersonneController extends Zend_Controller_Action
                 $mapper  = new Application_Model_PersonneMapper();
                 $personne = new Application_Model_Personne();
                 $personne = $mapper->obtenirPersonne($id);
-
                 $form->populate(array(  'prenom'        =>$personne->prenom,
                                         'nom'           =>$personne->nom,
                                         'courriel'      =>$personne->courriel,
@@ -165,7 +164,7 @@ class PersonneController extends Zend_Controller_Action
                                         'code_postal'   =>$personne->codePostal,
                                         'ville'         =>$personne->ville,
                                         'motDePasse'    =>$personne->password,
-                                        'estEmployé'    =>$personne->estEmploye
+                                        'estEmploye'    =>$personne->estEmploye
                                      ));
             }
         }
@@ -203,7 +202,7 @@ class PersonneController extends Zend_Controller_Action
                 $this->view->genre = $genre;
             }
     }
-    
+
     public function rechercherAction()
     {
         // action body
