@@ -2,30 +2,61 @@
 
 class Application_Form_ActeurRealisateur extends Zend_Form
 {
+    
     public function init()
     {
-      $this->setName('acteurRealisateur');
+        // La méthode HTTP d'envoi du formulaire
+        $this->setMethod('post');
 
-      $id = new Zend_Form_Element_Hidden('id');
-      $id->addFilter('Int');
+        // Un élément prénom
+        $this->addElement('text', 'prenom', array(
+              'label'         =>  'Prénom : ',
+              'required'      =>  true,
+              'filters'       =>  array('StripTags', 'StringTrim'),
+              'validators'    =>  array(array('validator' =>  'NotEmpty',
+                                                              'Alpha',
+                                                              'options' => array('size' => '45'))),
+                                                              /*'StringLength', true, 'options' => array(1, 45))),*/
+        ));
 
-      $nom = new Zend_Form_Element_Text('nom');
-      $nom->setLabel('Nom')
-          ->setRequired(true)
-          ->addFilter('StripTags')
-          ->addFilter('StringTrim')
-          ->addValidator('NotEmpty');
+        // Un élément nom
+        $this->addElement('text', 'nom', array(
+              'label'         =>  'Nom : ',
+              'required'      =>  true,
+              'filters'       =>  array('StripTags', 'StringTrim'),
+              'validators'    =>  array(array('validator' =>  'NotEmpty',
+                                                              'Alpha',
+                                                              'options' => array('size' => '45'))),
+                                                              /*'StringLength', true, 'options' => array(1, 45))),*/
+        ));
 
-      $prenom = new Zend_Form_Element_Text('prenom');
-      $prenom->setLabel('Prénom')
-             ->setRequired(true)
-             ->addFilter('StripTags')
-             ->addFilter('StringTrim')
-             ->addValidator('NotEmpty');
+        // Un bouton d'envoi
+        $this->addElement('submit', 'submit', array(
+            'ignore'   => true,
+            'label'    => 'Sauvegarder',
+        ));
 
-      $envoyer = new Zend_Form_Element_Submit('envoyer');
-      $envoyer->setAttrib('id', 'boutonenvoyer');
+        // Un bouton d'annulation
+        $this->addElement('reset', 'reset', array(
+            'ignore'   => true,
+            'label'    => 'Annuler',
+        ));
 
-      $this->addElements(array($id, $nom, $prenom, $envoyer));
+        // Et une protection anti CSRF
+        $this->addElement('hash', 'csrf', array(
+            'ignore' => true,
+        ));
+
+        $this->getElement("submit")->removeDecorator('DtDdWrapper') ;
+        $this->getElement("csrf")->removeDecorator('label') ;
+
+        $elements = array ("prenom", "nom") ;
+
+        foreach ($elements as $element) {
+            $element = $this->getElement($element) ;
+            if ($element!=null) {
+                $element->removeDecorator('htmlTag');
+            }
+        }
     }
 }
