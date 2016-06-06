@@ -1,5 +1,5 @@
 <?php
-$this->title = "Désactiver un compte";
+$this->title = 'Videoclub ZF';
 $this->headTitle($this->title);
 ?>
 <p>Êtes-vous sûr de vouloir désactiver le compte pour
@@ -9,7 +9,7 @@ $this->headTitle($this->title);
 <form action="<?php echo $this->url(array('action'=>'desactiver')); ?>" method="post">
 <div>
     <input type="hidden" name="id" value="<?php echo $this->personne->id; ?>" />
-    <input type="submit" name="supprimer" value="Oui" />
-    <input type="submit" name="supprimer" value="Non" />
+    <input type="submit" name="desactiver" value="Oui" />
+    <input type="button" name="annuler" value="Non" />
 </div>
 </form>
