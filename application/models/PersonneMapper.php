@@ -47,6 +47,7 @@ class Application_Model_PersonneMapper
             $personne->setCodePostal($row['code_postal']);
             $personne->setVille($row['ville']);
             $personne->setEstEmploye($row['estEmploye']);
+            $personne->setNumeroAdherent($row['numero_adherent']);
 
             return $personne;
         }
@@ -163,10 +164,13 @@ class Application_Model_PersonneMapper
         $this->getDbTable()->update($data, array('id = ?' => $id));
     }
 
-    public function desactiverPersonne($id)
+    public function desactivePersonne($id)
     {
-        $sql = "UPDATE  personne
-                SET     desactive = 1
-                WHERE   id = " . (int)$id . ";";
+        $desactive = 1;
+        $data = array(
+            'desactive' => $desactive,
+        );
+        $this->getDbTable()->update($data, array('id = ?' => $id));
+
     }
 }
