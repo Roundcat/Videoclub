@@ -174,13 +174,12 @@ class PersonneController extends Zend_Controller_Action
 
     public function detailAction()
     {
-        var_dump('1');
-        $mapper = new Application_Model_PersonneMapper();
-        $detail = new Application_Model_Personne(); var_dump($this->_getParam('id', 0));
         $id = $this->_getParam('id', 0);
-        $detail = $mapper->obtenirPersonne($id);
+        $mapper  = new Application_Model_PersonneMapper();
+        $personne = new Application_Model_Personne();
+        $personne = $mapper->obtenirPersonne($id);
+        $this->view->personne = $personne;
 
-        $this->view->personne = $detail; // déclaration utilisée pour la vue detail.phtml
     }
 
     public function desactiveAction()
@@ -188,19 +187,20 @@ class PersonneController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             $desactiver = $this->getRequest()->getPost('desactiver');
             if ($desactiver == 'Oui') {
-                $id = $this->_getParam('id', 0);
-                $mapper = new Application_Model_PersonneMapper();
-                $genre = new Application_Model_Personne();
-                $genre = $mapper->desactiverPersonne($id);
+            //     $id = $this->_getParam('id', 0);
+            //     $mapper = new Application_Model_PersonneMapper();
+            //     $personne = new Application_Model_Personne();
+            //     $personne = $mapper->desactivePersonne($id);
             }
-            $this->_helper->redirector('liste');
-            } else {
-                $id = $this->_getParam('id', 0);
-                $mapper  = new Application_Model_PersonneMapper();
-                $genre = new Application_Model_Personne();
-                $genre = $mapper->obtenirPersonne($id);
-                $this->view->genre = $genre;
-            }
+            $this->_helper->redirector('index', 'Index');
+        } else {
+            $id = $this->_getParam('id', 0);
+            $mapper  = new Application_Model_PersonneMapper();
+            $personne = new Application_Model_Personne();
+            $personne = $mapper->obtenirPersonne($id);
+            $this->view->personne = $personne;
+        }
+
     }
 
     public function rechercherAction()
