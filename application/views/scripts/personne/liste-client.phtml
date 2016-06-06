@@ -24,6 +24,9 @@ $this->headTitle($this->title);
                     &nbsp|&nbsp
                     <a href="<?php echo $this->url(array('controller'=>'personne',
                        'action'=>'detail', 'id'=>$client->id));?>">Détails</a>
+                    &nbsp|&nbsp
+                    <a href="<?php echo $this->url(array('controller'=>'personne',
+                       'action'=>'desactive', 'id'=>$client->id));?>">Désactiver</a>
                 </td>
 
             </tr>
