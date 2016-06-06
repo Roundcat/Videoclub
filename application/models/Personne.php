@@ -145,7 +145,7 @@ class Application_Model_Personne
 
     public function setDateCreation($dateCreation)
     {
-        $dateCreation = new Zend_Date();
+        $dateCreation = date("Y-m-d");
         $this->_dateCreation = $dateCreation;
         return $this;
     }

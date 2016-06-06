@@ -41,11 +41,11 @@ class Application_Model_PersonneMapper
             $personne->setPrenom($row['prenom']);
             $personne->setNom($row['nom']);
             $personne->setCourriel($row['courriel']);
+            $personne->setPassword($row['motDePasse']);
             $personne->setAdresse1($row['adresse1']);
             $personne->setAdresse2($row['adresse2']);
             $personne->setCodePostal($row['code_postal']);
             $personne->setVille($row['ville']);
-            $personne->setPassword($row['motDePasse']);
             $personne->setEstEmploye($row['estEmploye']);
 
             return $personne;
@@ -62,7 +62,7 @@ class Application_Model_PersonneMapper
                         , nom
                         , numero_adherent
                 FROM    personne
-                WHERE   estemploye = 0
+                WHERE   estEmploye = 0
                 ORDER BY nom ASC, prenom ASC;";
 
         $recup = $this->_db->fetchAll($sql);
@@ -88,7 +88,7 @@ class Application_Model_PersonneMapper
                         , nom
                         , numero_adherent
                 FROM    personne
-                WHERE   estemploye = 1
+                WHERE   estEmploye = 1
                 ORDER BY nom ASC, prenom ASC;";
 
         $recup = $this->_db->fetchAll($sql);
@@ -126,18 +126,18 @@ class Application_Model_PersonneMapper
     public function ajouterPersonne(Application_Model_Personne $personne)
     {
         $data = array(
-            'prenom'        =>  $personne->getPrenom(),
-            'nom'           =>  $personne->getNom(),
-            'courriel'      =>  $personne->getCourriel(),
-            'motDePasse'    =>  $personne->getPassword(),
-            'adresse1'      =>  $personne->getAdresse1(),
-            'adresse2'      =>  $personne->getAdresse2(),
-            'code_postal'   =>  $personne->getCodePostal(),
-            'ville'         =>  $personne->getVille(),
-            'estEmploye'    =>  $personne->getEstEmploye(),
-            'desactive'    =>  $personne->getDesactive(),
-            'date_creation'    =>  $personne->getDateCreation(),
-            'numero_adherent'    =>  $personne->getNumeroAdherent(),
+            'prenom'            =>  $personne->getPrenom(),
+            'nom'               =>  $personne->getNom(),
+            'courriel'          =>  $personne->getCourriel(),
+            'motDePasse'        =>  $personne->getPassword(),
+            'adresse1'          =>  $personne->getAdresse1(),
+            'adresse2'          =>  $personne->getAdresse2(),
+            'code_postal'       =>  $personne->getCodePostal(),
+            'ville'             =>  $personne->getVille(),
+            'estEmploye'        =>  $personne->getEstEmploye(),
+            'desactive'         =>  $personne->getDesactive(),
+            'date_creation'     =>  $personne->getDateCreation(),
+            'numero_adherent'   =>  $personne->getNumeroAdherent(),
         );
         if (null === ($id = $personne->getId())) {
             unset($data['id']);

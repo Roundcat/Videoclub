@@ -89,11 +89,11 @@ class PersonneController extends Zend_Controller_Action
         $request    = $this->getRequest();
         $form       = new Application_Form_Personne();
         $form->submit->setLabel('Ajouter');
+
         if ($request->isPost()) {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
                 $personne = new Application_Model_Personne($form->getValues());
-
                 // génération du numéro d'adhérent
                 $t = time();
                 $r = rand(10,99);
@@ -110,7 +110,7 @@ class PersonneController extends Zend_Controller_Action
                 $personne->setDesactive($desactive);
 
                 $mapper   = new Application_Model_PersonneMapper();
-                $test = $mapper->ajouterPersonne($personne);
+                $mapper->ajouterPersonne($personne);
                 return $this->_helper->redirector('index', 'Index');
             } else {
                 $form->populate($formData);
@@ -140,9 +140,9 @@ class PersonneController extends Zend_Controller_Action
                 $courriel   =   $form->getValue('courriel');
                 $adresse1   =   $form->getValue('adresse1');
                 $adresse2   =   $form->getValue('adresse2');
-                $codePostal =   $form->getValue('code_postal');
+                $codePostal =   $form->getValue('codePostal');
                 $ville      =   $form->getValue('ville');
-                $password   =   $form->getValue('motDePasse');
+                $password   =   $form->getValue('password');
                 $estEmploye =   $form->getValue('estEmploye');
                 $mapper  = new Application_Model_PersonneMapper();
                 $mapper->modifierPersonne($id, $prenom, $nom, $courriel, $adresse1, $adresse2, $codePostal, $ville, $password, $estEmploye);
@@ -161,9 +161,9 @@ class PersonneController extends Zend_Controller_Action
                                         'courriel'      =>$personne->courriel,
                                         'adresse1'      =>$personne->adresse1,
                                         'adresse2'      =>$personne->adresse2,
-                                        'code_postal'   =>$personne->codePostal,
+                                        'codePostal'   =>$personne->codePostal,
                                         'ville'         =>$personne->ville,
-                                        'motDePasse'    =>$personne->password,
+                                        'password'    =>$personne->password,
                                         'estEmploye'    =>$personne->estEmploye
                                      ));
             }

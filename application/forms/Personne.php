@@ -41,7 +41,7 @@ class Application_Form_Personne extends Zend_Form
         ));
 
         // Un élément password
-        $this->addElement('password', 'motDePasse', array(
+        $this->addElement('password', 'password', array(
             'label'         =>  'Mot de passe : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
@@ -68,7 +68,7 @@ class Application_Form_Personne extends Zend_Form
         ));
 
         // Un élément code postal
-        $this->addElement('text', 'code_postal', array(
+        $this->addElement('text', 'codePostal', array(
             'label'         =>  'Code postal : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
