@@ -2,25 +2,69 @@
 $this->title = 'Videoclub ZF';
 $this->headTitle($this->title);
 ?>
+<legend>Détail</legend>
+<div class="row">
+    <div class="col-sm-12 col-md-offset-4 col-md-8">
+        <table>
+            <tr>
+                <th>Numéro d'adhérent</th>
+                <td><?php echo $this->escape($this->personne->numeroAdherent); ?></td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td><?php echo $this->escape($this->personne->nom); ?></td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td><?php echo $this->escape($this->personne->prenom); ?></td>
+            </tr>
+            <tr>
+                <th>Adresse email</th>
+                <td><?php echo $this->escape($this->personne->courriel); ?></td>
+            </tr>
+            <tr>
+                <th>Adresse principale</th>
+                <td><?php echo $this->escape($this->personne->adresse1); ?></td>
+            </tr>
+            <tr>
+                <th>Suite de l'adresse</th>
+                <td><?php echo $this->escape($this->personne->adresse2); ?></td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td><?php echo $this->escape($this->personne->codePostal); ?></td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td><?php echo $this->escape($this->personne->ville); ?></td>
+            </tr>
+            <tr>
+                <th>Est employé</th>
+                <td><?php if (($this->escape($this->personne->estEmploye)) == 0) {
+                              echo "Non";
+                          } else {
+                              echo "Oui";
+                          } ; ?></td>
+            </tr>
 
-<table>
-    <tr>
-        <th>Numéro d'adhérent</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-		<th></th>
-    </tr>
-    <tr>
-        <td><?php echo $this->escape($personne->numeroAdherent); ?></td>
-        <td><?php echo $this->escape($personne->nom); ?></td>
-		<td><?php echo $this->escape($personne->prenom); ?></td>
-        <td>
-            <a href="<?php echo $this->url(array('controller'=>'personne',
-                'action'=>'modifier', 'id'=>$employe->id));?>">Modifier</a>
-             &nbsp|&nbsp
-            <a href="<?php echo $this->url(array('controller'=>'personne',
-                'action'=>'desactive', 'id'=>$employe->id));?>">Désactiver</a>
-        </td>
+            <tr><th></th></tr>
+            <tr><th></th></tr>
 
-    </tr>
-</table>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url(array('controller'=>'personne',
+                        'action'=>'modifier', 'id'=>$this->personne->id));?>">Modifier</a>
+                     &nbsp|&nbsp
+                    <a href="<?php echo $this->url(array('controller'=>'personne',
+                        'action'=>'desactive', 'id'=>$this->personne->id));?>">Désactiver</a>
+                </td>
+            </tr>
+
+            <tr><th></th></tr>
+            <tr><th></th></tr>
+            <tr><th></th></tr>
+            <tr><th></th></tr>
+
+        </table>
+    </div>
+</div>
