@@ -48,6 +48,8 @@ class Application_Model_PersonneMapper
             $personne->setVille($row['ville']);
             $personne->setEstEmploye($row['estEmploye']);
             $personne->setNumeroAdherent($row['numero_adherent']);
+            $personne->setDesactive($row['desactive']);
+            $personne->setDateCreation($row['date_creation']);
 
             return $personne;
         }
@@ -64,6 +66,7 @@ class Application_Model_PersonneMapper
                         , numero_adherent
                 FROM    personne
                 WHERE   estEmploye = 0
+                AND     desactive = 0
                 ORDER BY nom ASC, prenom ASC;";
 
         $recup = $this->_db->fetchAll($sql);
@@ -90,6 +93,7 @@ class Application_Model_PersonneMapper
                         , numero_adherent
                 FROM    personne
                 WHERE   estEmploye = 1
+                AND     desactive = 0
                 ORDER BY nom ASC, prenom ASC;";
 
         $recup = $this->_db->fetchAll($sql);

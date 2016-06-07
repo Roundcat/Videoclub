@@ -6,10 +6,10 @@ $this->headTitle($this->title);
     ' <?php echo $this->escape($this->personne->prenom); ?>
 	<?php echo $this->escape($this->personne->nom); ?> ' ?
 </p>
-<form action="<?php echo $this->url(array('action'=>'desactiver')); ?>" method="post">
+<form action="<?php echo $this->url(array('action'=>'desactive')); ?>" method="post">
 <div>
     <input type="hidden" name="id" value="<?php echo $this->personne->id; ?>" />
-    <input type="submit" name="desactiver" value="Oui" />
+    <input type="submit" name="desactive" value="Oui" />
     <input type="button" name="annuler" value="Non" />
 </div>
 </form>

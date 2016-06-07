@@ -184,13 +184,15 @@ class PersonneController extends Zend_Controller_Action
 
     public function desactiveAction()
     {
+        var_dump('1');
+        var_dump($this->getRequest()->isPost());
         if ($this->getRequest()->isPost()) {
-            $desactiver = $this->getRequest()->getPost('desactiver');
+            $desactiver = $this->getRequest()->getPost('desactive');
             if ($desactiver == 'Oui') {
-            //     $id = $this->_getParam('id', 0);
-            //     $mapper = new Application_Model_PersonneMapper();
-            //     $personne = new Application_Model_Personne();
-            //     $personne = $mapper->desactivePersonne($id);
+                $id = $this->_getParam('id', 0);
+                $mapper = new Application_Model_PersonneMapper();
+                $personne = new Application_Model_Personne();
+                $personne = $mapper->desactivePersonne($id);
             }
             $this->_helper->redirector('index', 'Index');
         } else {
@@ -198,6 +200,7 @@ class PersonneController extends Zend_Controller_Action
             $mapper  = new Application_Model_PersonneMapper();
             $personne = new Application_Model_Personne();
             $personne = $mapper->obtenirPersonne($id);
+            var_dump($mapper->obtenirPersonne($id));
             $this->view->personne = $personne;
         }
 
