@@ -23,6 +23,7 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Nom : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
+            'attribs'       =>  array('size' => 50),
             'validators'    =>  array(array('validator' =>  'NotEmpty',
                                                             'Alpha',
                                                             'StringLength', 'options' => array(1, 45))),
@@ -33,6 +34,7 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Adresse email : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
+            'attribs'       =>  array('size' => 50),
             'validators'    =>  array(array('validator' =>  'NotEmpty',
                                                             'EmailAddress',
                                                             'StringLength', 'options' => array(6,50))),
@@ -43,6 +45,7 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Mot de passe : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
+            'attribs'       =>  array('size' => 50),
             'validators'    =>  array(array('validator' =>  'NotEmpty',
                                                             'StringLength', 'options' => array(6, 12))),
         ));
@@ -52,6 +55,7 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Adresse principale : ',
             'required'      =>  false,
             'filters'       =>  array('StripTags', 'StringTrim'),
+            'attribs'       =>  array('size' => 50),
             'validators'    =>  array(array('validator' =>    'NotEmpty',
                                                         'StringLength', 'options' => array(0, 100))),
         ));
@@ -61,8 +65,9 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Suite de l\'adresse : ',
             'required'      =>  false,
             'filters'       =>  array('StripTags', 'StringTrim'),
+            'attribs'       =>  array('size' => 50),
             'validators'    =>  array(array('validator' =>    'NotEmpty',
-                                                        'StringLength', true, 'options' => array(0, 100))),
+                                                        'StringLength', 'options' => array(0, 100))),
         ));
 
         // Un élément code postal
@@ -70,6 +75,7 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Code postal : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
+            'attribs'       =>  array('size' => 20),
             'validators'    =>  array(array('validator' =>  'NotEmpty',
                                                             'StringLength', 'options' => array(5, 5))),
         ));
@@ -79,6 +85,7 @@ class Application_Form_Personne extends Zend_Form
             'label'         =>  'Ville : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
+            'attribs'       =>  array('size' => 50),
             'validators'    =>  array(array('validator' =>  'NotEmpty',
                                                             'Alpha',
                                                             'StringLength', 'options' => array(0, 100))),
