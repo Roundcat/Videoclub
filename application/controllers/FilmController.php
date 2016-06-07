@@ -13,6 +13,34 @@ class FilmController extends Zend_Controller_Action
         // action body
     }
 
+    public function ajouterAction()
+    {
+        // action body
+    }
+
+    public function modifierAction()
+    {
+        // action body
+    }
+
+    public function desactiveAction()
+    {
+        // action body
+    }
+
+    public function listeAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
+
+
+
+
 
