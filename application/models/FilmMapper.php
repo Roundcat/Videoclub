@@ -27,7 +27,7 @@ class Application_Model_FilmMapper
     public function getDbTable()
     {
         if (null === $this->_dbTable) {
-            $this->setDbTable('Application_Model_DbTable_Personne');
+            $this->setDbTable('Application_Model_DbTable_Film');
         }
         return $this->_dbTable;
     }
@@ -54,4 +54,50 @@ class Application_Model_FilmMapper
             return 0;
         }
     }
+
+    public function obtenirAllFilms()
+    {
+        $sql = "SELECT  id
+                        , nom
+                        , resume
+                FROM    film
+                ORDER BY nom ASC;";
+
+        $recup = $this->_db->fetchAll($sql);
+
+        $tab = array();
+
+        foreach ($recup as $row) {
+            $film = new Application_Model_Film();
+            $film ->setId($row['id'])
+                    ->setNom($row['nom'])
+                    ->setResume($row['resume']);
+
+            $tab[] = $film;
+        }
+        return $tab;
+    }
+
+    public function ajouterFilm(Application_Model_Film $film)
+    {
+        $data = array(
+            'nom' => $film->getNom(),
+            'date_film' => $film->getDateFilm(),
+            'resume' => $film->getResume(),
+            'realisateur_id' => $film->getRealisateurId(),
+            'date_creation' => $film->getDateCreation(),
+            'acteur1' => $film->getActeur1(),
+            'acteur2' => $film->getActeur2(),
+            'acteur3' => $film->getActeur3(),
+            'id_genre' => $film->getGenre(),
+        );
+        if (null === ($id = $film->getId())) {
+            unset($data['id']);
+            $this->getDbTable()->insert($data);
+        } else {
+            $this->getDbTable()->update($data, array('id = ?' => $id));
+        }
+    }
+
+    
 }
