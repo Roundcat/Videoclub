@@ -7,7 +7,7 @@ class Application_Model_Film
     protected $_dateFilm;
     protected $_resume;
     protected $_dateCreation;
-    protected $_realisateur;
+    protected $_realisateurId;
     protected $_acteur1;
     protected $_acteur2;
     protected $_acteur3;
@@ -76,7 +76,6 @@ class Application_Model_Film
 
     public function setDateFilm($dateFilm)
     {
-        $dateFilm = date("Y-m-d");
         $this->_dateFilm = $dateFilm;
         return $this;
     }
@@ -94,12 +93,11 @@ class Application_Model_Film
 
     public function getResume()
     {
-        return $this->_Resume;
+        return $this->_resume;
     }
 
     public function setDateCreation($dateCreation)
     {
-        $dateCreation = date("Y-m-d");
         $this->_dateCreation = $dateCreation;
         return $this;
     }
@@ -109,15 +107,15 @@ class Application_Model_Film
         return $this->_dateCreation;
     }
 
-    public function setRealisateur($realisateur)
+    public function setRealisateurId($realisateur)
     {
-        $this->_realisateur = (int) $realisateur;
+        $this->_realisateurId = (int) $realisateur;
         return $this;
     }
 
-    public function getRealisateur()
+    public function getRealisateurId()
     {
-        return $this->_realisateur;
+        return $this->_realisateurId;
     }
 
     public function setActeur1($acteur1)
