@@ -24,6 +24,7 @@ class FilmController extends Zend_Controller_Action
         $form       = new Application_Form_Film();
         $form->submit->setLabel('Ajouter');
 
+        // Afficher les réalisateurs et les acteurs dans leur liste déroulante respective
         $realisateurMapper = new Application_Model_ActeurRealisateurMapper();
         $realisateurs = $realisateurMapper->fetchAll();
         $options = array();
@@ -75,7 +76,48 @@ class FilmController extends Zend_Controller_Action
 
     public function modifierAction()
     {
-        // action body
+        $request = $this->getRequest();
+        $form    = new Application_Form_Film();
+        $form->submit->setLabel('Modifier');
+
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            if ($form->isValid($formData)) {
+                $id             =   $this->_getParam('id', 0);
+                $nom            =   $form->getValue('nom');
+                $dateFilm       =   $form->getValue('date_film');
+                $resume         =   $form->getValue('resume');
+                $realisateur    =   $form->getValue('realisateur_id');
+                $acteur1        =   $form->getValue('acteur1');
+                $acteur2        =   $form->getValue('acteur2');
+                $acteur3        =   $form->getValue('acteur3');
+                $genre          =   $form->getValue('id_genre');
+
+                $mapper  = new Application_Model_FilmMapper();
+                $mapper->modifierFilm($id, $nom, $dateFilm, $resume, $realisateur, $acteur1, $acteur2, $acteur3, $genre);
+                return $this->_helper->redirector('index', 'Index');
+            } else {
+                $form->populate($formData);
+            }
+        } else {
+            $id = $this->_getParam('id', 0);
+            if ($id > 0) {
+                $mapper  = new Application_Model_FilmMapper();
+                $film = new Application_Model_Film();
+                $film = $mapper->obtenirFilm($id); var_dump($mapper->obtenirFilm($id));
+                $form->populate(array(  'nom'               =>$film->nom,
+                                        'date_film'         =>$film->dateFilm,
+                                        'resume'            =>$film->resume,
+                //                         'realisateur_id'    =>$film->realisateurID,
+                                        'acteur1'           =>$film->acteur1,
+                                        'acteur2'           =>$film->acteur2,
+                                        'acteur3'           =>$film->acteur3,
+                                        'id_genre'          =>$film->genre,
+                                     ));
+            }
+        }
+
+        $this->view->form = $form;
     }
 
     public function desactiveAction()
@@ -104,5 +146,12 @@ class FilmController extends Zend_Controller_Action
         $this->view->paginator = $paginator;
     }
 
+    public function detailAction()
+    {
+        // action body
+    }
+
 
 }
+
+
