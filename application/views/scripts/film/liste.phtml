@@ -5,7 +5,7 @@ $this->headTitle($this->title);
 <p><a href="<?php echo $this->url(array('controller'=>'film',
         'action'=>'ajouter'));?>">Ajouter un film</a></p>
 <div class="row">
-    <div class="col-sm-12 col-md-offset-4 col-md-8">
+    <div class="col-sm-12 col-md-offset-2 col-md-10">
         <table>
             <tr>
                 <th>Numéro du film</th>
@@ -13,7 +13,8 @@ $this->headTitle($this->title);
                 <th>Résumé</th>
         		<th></th>
             </tr>
-        <?php foreach($this->paginator as $film) : ?> <!-- je met $this->paginator car dans le controller j'ai utilisé $this->view->paginator -->
+        <?php
+        foreach($this->paginator as $film) : ?> <!-- je met $this->paginator car dans le controller j'ai utilisé $this->view->paginator -->
             <tr>
                 <td><?php echo $this->escape($film->id); ?></td>
                 <td><?php echo $this->escape($film->nom); ?></td>
