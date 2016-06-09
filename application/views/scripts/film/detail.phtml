@@ -1,4 +1,73 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Film</b> and script/action name <b>detail</b></p>
+<?php
+$this->title = 'Videoclub ZF';
+$this->headTitle($this->title);
+?>
+<legend>Détail</legend>
+<div class="row">
+    <div class="col-sm-12 col-md-offset-4 col-md-6">
+        <table>
+            <tr>
+                <th class="detail">Titre du film</th>
+                <td><?php echo $this->escape($this->film->nom); ?></td>
+            </tr>
+            <tr>
+                <th class="detail">Date de réalisation</th>
+                <td><?php echo $this->escape($this->film->dateFilm); ?></td>
+            </tr>
+            <tr>
+                <th class="detail">Réalisateur</th>
+                <td><?php echo $this->escape($this->realisateur); ?></td>
+            </tr>
+            <tr>
+                <th class="detail">Acteur principal</th>
+                <td><?php echo $this->escape($this->acteur1); ?></td>
+            </tr>
+            <tr>
+                <th class="detail">Autre acteur</th>
+                <td><?php echo $this->escape($this->acteur2); ?></td>
+            </tr>
+            <tr>
+                <th class="detail">Autre acteur</th>
+                <td><?php echo $this->escape($this->acteur3); ?></td>
+            </tr>
+            <tr>
+                <th class="detail">Genre</th>
+                <td><?php echo $this->escape($this->genre); ?></td>
+            </tr>
+			<tr>
+                <th class="detail">Résumé du film</th>
+                <td class="resume"><?php echo $this->escape($this->film->resume); ?></td>
+            </tr>
+
+            <tr><th></th></tr>
+            <tr><th></th></tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-offset-4 col-md-8">
+        <table>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url(array('controller'=>'film',
+                        'action'=>'modifier', 'id'=>$this->film->id));?>">Modifier</a>
+                    &nbsp|&nbsp
+                    <a href="<?php echo $this->url(array('controller'=>'film',
+                        'action'=>'desactive', 'id'=>$this->film->id));?>">Désactiver</a>
+                    &nbsp|&nbsp
+                    <a href="<?php echo $this->url(array('controller'=>'film',
+                        'action'=>'mediaDVD', 'id'=>$this->film->id));?>">Ajouter un DVD</a>
+                    &nbsp|&nbsp
+                    <a href="<?php echo $this->url(array('controller'=>'film',
+                        'action'=>'mediaBluRay', 'id'=>$this->film->id));?>">Ajouter un Blu-Ray</a>
+            </tr>
+
+            <tr><th></th></tr>
+            <tr><th></th></tr>
+            <tr><th></th></tr>
+            <tr><th></th></tr>
+
+        </table>
+    </div>
 </div>
