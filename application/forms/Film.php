@@ -41,7 +41,7 @@ class Application_Form_Film extends Zend_Form
             'label'         =>  'Réalisateur : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            // 'attribs'       =>  array('size' => 20),
+            'attribs'       =>  array('style' => 'width: 150px'),
             'validators'    =>  array(array('validator' => 'NotEmpty'))
         ));
 
@@ -50,7 +50,7 @@ class Application_Form_Film extends Zend_Form
             'label'         =>  'Acteur principal : ',
             'required'      =>  true,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            // 'attribs'       =>  array('size' => 50),
+            'attribs'       =>  array('style' => 'width: 150px'),
             'validators'    =>  array(array('validator' => 'NotEmpty'))
         ));
 
@@ -59,7 +59,7 @@ class Application_Form_Film extends Zend_Form
             'label'         =>  'Autre acteur : ',
             'required'      =>  false,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            // 'attribs'       =>  array('size' => 50),
+            'attribs'       =>  array('style' => 'width: 150px'),
         ));
 
         // Un élément acteur3 (null)
@@ -67,7 +67,7 @@ class Application_Form_Film extends Zend_Form
             'label'         =>  'Autre acteur : ',
             'required'      =>  false,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            // 'attribs'       =>  array('size' => 50),
+            'attribs'       =>  array('style' => 'width: 150px'),
         ));
 
         // Un élément id_genre (null)
@@ -75,7 +75,7 @@ class Application_Form_Film extends Zend_Form
             'label'         =>  'Genre : ',
             'required'      =>  false,
             'filters'       =>  array('StripTags', 'StringTrim'),
-            // 'attribs'       =>  array('size' => 50),
+            'attribs'       =>  array('style' => 'width: 150px'),
         ));
 
         // Un bouton d'envoi
