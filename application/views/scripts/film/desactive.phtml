@@ -2,3 +2,13 @@
 $this->title = 'Videoclub ZF';
 $this->headTitle($this->title);
 ?>
+<p>Êtes-vous sûr de vouloir désactiver le média
+    ' <?php echo $this->escape($this->film->typeMedia); ?> ' ?
+</p>
+<form action="<?php echo $this->url(array('action'=>'desactive')); ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo $this->media->id; ?>" />
+    <input type="submit" name="desactive" value="Oui" />
+    <input type="button" name="annuler" value="Non" />
+</div>
+</form>
