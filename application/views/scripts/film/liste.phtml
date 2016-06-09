@@ -8,7 +8,6 @@ $this->headTitle($this->title);
     <div class="col-sm-12 col-md-offset-2 col-md-10">
         <table>
             <tr>
-                <th>Numéro du film</th>
                 <th>Nom</th>
                 <th>Résumé</th>
         		<th></th>
@@ -16,9 +15,8 @@ $this->headTitle($this->title);
         <?php
         foreach($this->paginator as $film) : ?> <!-- je met $this->paginator car dans le controller j'ai utilisé $this->view->paginator -->
             <tr>
-                <td><?php echo $this->escape($film->id); ?></td>
                 <td><?php echo $this->escape($film->nom); ?></td>
-        		<td><?php echo $this->escape($film->resume); ?></td>
+        		<td class="resume"><?php echo $this->escape($film->resume); ?></td>
                 <td>
                     <a href="<?php echo $this->url(array('controller'=>'film',
                         'action'=>'modifier', 'id'=>$film->id));?>">Modifier</a>
