@@ -156,15 +156,15 @@ class PersonneController extends Zend_Controller_Action
                 $mapper  = new Application_Model_PersonneMapper();
                 $personne = new Application_Model_Personne();
                 $personne = $mapper->obtenirPersonne($id);
-                $form->populate(array(  'prenom'        =>$personne->prenom,
-                                        'nom'           =>$personne->nom,
-                                        'courriel'      =>$personne->courriel,
-                                        'adresse1'      =>$personne->adresse1,
-                                        'adresse2'      =>$personne->adresse2,
-                                        'codePostal'   =>$personne->codePostal,
-                                        'ville'         =>$personne->ville,
-                                        'password'    =>$personne->password,
-                                        'estEmploye'    =>$personne->estEmploye
+                $form->populate(array(  'prenom'        =>$personne->getPrenom(),
+                                        'nom'           =>$personne->getNom(),
+                                        'courriel'      =>$personne->getCourriel(),
+                                        'adresse1'      =>$personne->getAdresse1(),
+                                        'adresse2'      =>$personne->getAdresse2(),
+                                        'codePostal'    =>$personne->getCodePostal(),
+                                        'ville'         =>$personne->getVille(),
+                                        'password'      =>$personne->getPassword(),
+                                        'estEmploye'    =>$personne->getEstEmploye(),
                                      ));
             }
         }
@@ -184,8 +184,6 @@ class PersonneController extends Zend_Controller_Action
 
     public function desactiveAction()
     {
-        var_dump('1');
-        var_dump($this->getRequest()->isPost());
         if ($this->getRequest()->isPost()) {
             $desactiver = $this->getRequest()->getPost('desactive');
             if ($desactiver == 'Oui') {
