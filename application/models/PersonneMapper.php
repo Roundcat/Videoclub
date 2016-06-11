@@ -177,4 +177,30 @@ class Application_Model_PersonneMapper
         $this->getDbTable()->update($data, array('id = ?' => $id));
 
     }
+
+    public function listeDesactivePersonne()
+    {
+        $sql = "SELECT  id
+                        , prenom
+                        , nom
+                        , numero_adherent
+                FROM    personne
+                WHERE   desactive = 1
+                ORDER BY nom ASC, prenom ASC;";
+
+        $recup = $this->_db->fetchAll($sql);
+
+        $tab = array();
+
+        foreach ($recup as $row) {
+            $client = new Application_Model_Personne();
+            $client ->setId($row['id'])
+                    ->setPrenom($row['prenom'])
+                    ->setNom($row['nom'])
+                    ->setNumeroAdherent($row['numero_adherent']);
+
+            $tab[] = $client;
+        }
+        return $tab;
+    }
 }

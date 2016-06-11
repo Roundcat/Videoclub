@@ -44,7 +44,7 @@ echo $this->doctype(); ?>
                   <ul class="nav navbar-nav">
                     <li class="active"><a href="<?php echo $this->url(array('controller'=>'index' , 'action'=>'index')); ?>"><span class="glyphicon glyphicon-home"></span></a></li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" href="<?php echo $this->url(array('controller'=>'film' , 'action'=>'index')); ?>"><span class="glyphicon glyphicon-film"></span> Les films<b class="caret"></b></a>
+                        <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-film"></span> Les films<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo $this->url(array('controller'=>'film' , 'action'=>'liste')); ?>"><span class="glyphicon glyphicon-list"></span> Voir tous les films</a></li>
                             <li><a href="<?php echo $this->url(array('controller'=>'film' , 'action'=>'ajouter')); ?>"><span class="glyphicon glyphicon-plus"></span> Ajouter un film</a></li>
@@ -61,6 +61,7 @@ echo $this->doctype(); ?>
                             <!-- <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste')); ?>"><span class="glyphicon glyphicon-list"></span> Tout le monde</a></li> -->
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste-client')); ?>"><span class="glyphicon glyphicon-list"></span> Voir tous les clients</a></li>
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste-employe')); ?>"><span class="glyphicon glyphicon-list"></span> Voir tous les employés</a></li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'liste-desactive-personne')); ?>"><span class="glyphicon glyphicon-list"></span> Voir toutes les personnes désactivées</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo $this->url(array('controller'=>'personne' , 'action'=>'ajouter')); ?>"><span class="glyphicon glyphicon-info-plus"></span> Ajouter un compte</a></li>
                         </ul></li>

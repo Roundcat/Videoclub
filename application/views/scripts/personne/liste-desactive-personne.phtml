@@ -1,4 +1,25 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Personne</b> and script/action name <b>listeDesactivePersonne</b></p>
+<?php
+$this->title = 'Videoclub ZF';
+$this->headTitle($this->title);
+?>
+<legend>Liste des personnes désactivées</legend>
+<div class="row">
+    <div class="col-sm-12 col-md-offset-4 col-md-8">
+        <table>
+            <tr>
+                <th>Numéro d'adhérent</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+        		<th></th>
+            </tr>
+        <?php foreach($this->paginator as $desactive) : ?>
+            <tr>
+                <td><?php echo $this->escape($desactive->numeroAdherent); ?></td>
+                <td><?php echo $this->escape($desactive->nom); ?></td>
+        		<td><?php echo $this->escape($desactive->prenom); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </table>
+    </div>
 </div>
+<?php echo $this->paginator; ?>
