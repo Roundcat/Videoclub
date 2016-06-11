@@ -48,6 +48,7 @@
           <actionMethod actionName="listeClient"/>
           <actionMethod actionName="listeEmploye"/>
           <actionMethod actionName="detail"/>
+          <actionMethod actionName="listeDesactivePersonne"/>
         </controllerFile>
         <controllerFile controllerName="Location">
           <actionMethod actionName="index"/>
@@ -201,6 +202,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Film">
             <viewScriptFile forActionName="listemedia"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Personne">
+            <viewScriptFile forActionName="listeDesactivePersonne"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
