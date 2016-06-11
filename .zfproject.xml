@@ -25,6 +25,12 @@
           <actionMethod actionName="desactive"/>
           <actionMethod actionName="liste"/>
           <actionMethod actionName="detail"/>
+          <actionMethod actionName="media"/>
+          <actionMethod actionName="ajouterMediaDVD"/>
+          <actionMethod actionName="ajouterMediaBlueray"/>
+          <actionMethod actionName="ajoutermediablueray"/>
+          <actionMethod actionName="ajoutermediadvd"/>
+          <actionMethod actionName="listemedia"/>
         </controllerFile>
         <controllerFile controllerName="ActeurRealisateur">
           <actionMethod actionName="index"/>
@@ -177,6 +183,24 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Location">
             <viewScriptFile forActionName="listeSortie"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Film">
+            <viewScriptFile forActionName="media"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Film">
+            <viewScriptFile forActionName="ajouterMediaDVD"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Film">
+            <viewScriptFile forActionName="ajouterMediaBlueray"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Film">
+            <viewScriptFile forActionName="ajoutermediablueray"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Film">
+            <viewScriptFile forActionName="ajoutermediadvd"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Film">
+            <viewScriptFile forActionName="listemedia"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
