@@ -46,4 +46,12 @@ class Application_Model_LocationMapper
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
     }
+
+    public function saisirRetourLocation($idlocation, $dateRetour)
+    {
+        $data = array(
+            'date_retour'     =>  $dateRetour,
+        );
+        $this->getDbTable()->update($data, array('id = ?' => $id));
+    }
 }
