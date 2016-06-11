@@ -3,9 +3,14 @@
 class LocationController extends Zend_Controller_Action
 {
 
+    protected $_flashMessenger = null;
+
     public function init()
     {
         /* Initialize action controller here */
+        $this->_flashMessenger = $this->_helper
+                                      ->getHelper('FlashMessenger');
+        $this->initView();
     }
 
     public function indexAction()
@@ -30,10 +35,3 @@ class LocationController extends Zend_Controller_Action
 
 
 }
-
-
-
-
-
-
-
