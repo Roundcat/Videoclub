@@ -62,6 +62,7 @@
         <formFile formName="ActeurRealisateur"/>
         <formFile formName="Personne"/>
         <formFile formName="Film"/>
+        <formFile formName="Location"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
