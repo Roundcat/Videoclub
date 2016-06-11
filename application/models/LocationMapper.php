@@ -32,4 +32,18 @@ class Application_Model_LocationMapper
         return $this->_dbTable;
     }
 
+    public function saisirSortieLocation(Application_Model_Location $location)
+    {
+        $data = array(
+            'Personne_id'       =>  $location->getPersonneId(),
+            'media_id'          =>  $location->getMediaId(),
+            'date_location'     =>  $location->getDateLocation(),
+        );
+        if (null === ($id = $film->getId())) {
+            unset($data['id']);
+            $this->getDbTable()->insert($data);
+        } else {
+            $this->getDbTable()->update($data, array('id = ?' => $id));
+        }
+    }
 }
