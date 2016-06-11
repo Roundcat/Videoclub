@@ -17,15 +17,13 @@ $this->headTitle($this->title);
             <tr>
                 <td><?php echo $this->escape($film->nom); ?></td>
         		<td class="resume"><?php echo $this->escape($film->resume); ?></td>
+
                 <td>
                     <a href="<?php echo $this->url(array('controller'=>'film',
                         'action'=>'modifier', 'id'=>$film->id));?>">Modifier</a>
                     &nbsp|&nbsp
                     <a href="<?php echo $this->url(array('controller'=>'film',
                        'action'=>'detail', 'id'=>$film->id));?>">Détails</a>
-                    &nbsp|&nbsp
-                    <a href="<?php echo $this->url(array('controller'=>'film',
-                       'action'=>'desactive', 'id'=>$film->id));?>">Désactiver</a>
                 </td>
 
             </tr>
