@@ -41,7 +41,7 @@ class Application_Model_FilmMapper
             $film->setNom($row['nom']);
             $film->setResume($row['resume']);
             $film->setDateFilm($row['date_film']);
-            $film->setRealisateur($row['realisateur_id']);
+            $film->setRealisateurId($row['realisateur_id']); // TODO erreur à cet endroit
             $film->setActeur1($row['acteur1']);
             $film->setActeur2($row['acteur2']);
             $film->setActeur3($row['acteur3']);
@@ -81,15 +81,15 @@ class Application_Model_FilmMapper
     public function ajouterFilm(Application_Model_Film $film)
     {
         $data = array(
-            'nom' => $film->getNom(),
-            'date_film' => $film->getDateFilm(),
-            'resume' => $film->getResume(),
-            'realisateur_id' => $film->getRealisateurId(),
-            'date_creation' => $film->getDateCreation(),
-            'acteur1' => $film->getActeur1(),
-            'acteur2' => $film->getActeur2(),
-            'acteur3' => $film->getActeur3(),
-            'id_genre' => $film->getGenre(),
+            'nom'               => $film->getNom(),
+            'date_film'         => $film->getDateFilm(),
+            'resume'            => $film->getResume(),
+            'realisateur_id'    => $film->getRealisateurId(),
+            'date_creation'     => $film->getDateCreation(),
+            'acteur1'           => $film->getActeur1(),
+            'acteur2'           => $film->getActeur2(),
+            'acteur3'           => $film->getActeur3(),
+            'id_genre'          => $film->getGenre(),
         );
         if (null === ($id = $film->getId())) {
             unset($data['id']);
@@ -99,5 +99,18 @@ class Application_Model_FilmMapper
         }
     }
 
-    
+    public function modifierFilm($id, $nom, $dateFilm, $resume, $realisateurId, $acteur1, $acteur2, $acteur3, $genre)
+    {
+        $data = array(
+            'nom'               =>  $nom,
+            'date_film'         =>  $dateFilm,
+            'resume'            =>  $resume,
+            'realisateur_id'    =>  $realisateurId,
+            'acteur1'           =>  $acteur1,
+            'acteur2'           =>  $acteur2,
+            'acteur3'           =>  $acteur3,
+            'id_genre'          =>  $genre,
+        );
+        $this->getDbTable()->update($data, array('id = ?' => $id));
+    }
 }
