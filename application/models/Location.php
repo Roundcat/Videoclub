@@ -49,13 +49,13 @@ class Application_Model_Location
 
     public function setId($id)
     {
-        $this->_id = (int) $id;
+        $this->_idlocation = (int) $id;
         return $this;
     }
 
     public function getId()
     {
-        return $this->_id;
+        return $this->_idlocation;
     }
 
     public function setPersonneId($personneId)
