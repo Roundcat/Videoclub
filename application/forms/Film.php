@@ -98,7 +98,7 @@ class Application_Form_Film extends Zend_Form
         $this->getElement("submit")->removeDecorator('DtDdWrapper') ;
         $this->getElement("csrf")->removeDecorator('label') ;
 
-        $elements = array ("prenom", "nom", "courriel", "password", "adresse1", "adresse2", "codePostal", "ville", "estEmploye") ;
+        $elements = array ("nom", "dateFilm", "resume", "realisateurId", "acteur1", "acteur2", "acteur3", "genre") ;
 
         foreach ($elements as $element) {
             $element = $this->getElement($element) ;
