@@ -112,21 +112,21 @@ class Application_Model_PersonneMapper
         return $tab;
     }
 
-    public function fetchAll()
-    {
-        $resultSet = $this->getDbTable()->fetchAll();
-        $entries   = array();
-        foreach ($resultSet as $row) {
-            $entry = new Application_Model_Personne();
-            $entry->setId($row->id)
-                  ->setNumeroAdherent($row['numero_adherent'])
-                  ->setPrenom($row->prenom)
-                  ->setNom($row->nom)
-                  ->setEstEmploye($row->estEmploye);
-            $entries[] = $entry;
-        }
-        return $entries;
-    }
+    // public function fetchAll()
+    // {
+    //     $resultSet = $this->getDbTable()->fetchAll();
+    //     $entries   = array();
+    //     foreach ($resultSet as $row) {
+    //         $entry = new Application_Model_Personne();
+    //         $entry->setId($row->id)
+    //               ->setNumeroAdherent($row['numero_adherent'])
+    //               ->setPrenom($row->prenom)
+    //               ->setNom($row->nom)
+    //               ->setEstEmploye($row->estEmploye);
+    //         $entries[] = $entry;
+    //     }
+    //     return $entries;
+    // }
 
     public function ajouterPersonne(Application_Model_Personne $personne)
     {
