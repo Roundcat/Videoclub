@@ -74,14 +74,21 @@ class Application_Model_GenreMapper
 
     public function fetchAll()
     {
-        $resultSet = $this->getDbTable()->fetchAll();
-        $entries   = array();
-        foreach ($resultSet as $row) {
-            $entry = new Application_Model_Genre();
-            $entry->setId($row->id)
-                  ->setGenre($row->genre);
-            $entries[] = $entry;
+        $sql = "SELECT *
+                FROM genre
+                ORDER BY genre ASC;";
+
+        $recup = $this->_db->fetchAll($sql);
+
+        $tab = array();
+
+        foreach ($recup as $row) {
+            $genre = new Application_Model_Genre();
+            $genre ->setId($row['id'])
+                    ->setGenre($row['genre']);
+
+            $tab[] = $genre;
         }
-        return $entries;
+        return $tab;
     }
 }

@@ -73,16 +73,23 @@ class Application_Model_ActeurRealisateurMapper
 
     public function fetchAll()
     {
-        $resultSet = $this->getDbTable()->fetchAll();
-        $entries   = array();
-        foreach ($resultSet as $row) {
-            $entry = new Application_Model_ActeurRealisateur();
-            $entry->setId($row->id)
-                  ->setPrenom($row->prenom)
-                  ->setNom($row->nom);
-            $entries[] = $entry;
+        $sql = "SELECT *
+                FROM acteur_realisateur
+                ORDER BY nom ASC, prenom ASC;";
+
+        $recup = $this->_db->fetchAll($sql);
+
+        $tab = array();
+
+        foreach ($recup as $row) {
+            $acteurRealisateur = new Application_Model_ActeurRealisateur();
+            $acteurRealisateur ->setId($row['id'])
+                    ->setPrenom($row['prenom'])
+                    ->setNom($row['nom']);
+
+            $tab[] = $acteurRealisateur;
         }
-        return $entries;
+        return $tab;
     }
 
 }
