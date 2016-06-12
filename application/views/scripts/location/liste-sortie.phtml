@@ -1,4 +1,32 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Location</b> and script/action name <b>listeSortie</b></p>
+<?php
+$this->title = 'Videoclub ZF';
+$this->headTitle($this->title);
+?>
+<legend>Liste des locations en cours</legend>
+<div class="row">
+    <div class="col-sm-12 col-md-offset-2 col-md-10">
+        <table>
+            <tr>
+                <th>Date de la location</th>
+                <th>Titre du film</th>
+                <th>Client</th>
+                <th>Son numéro d'adhérent</th>
+        		<th></th>
+            </tr>
+        <?php
+        foreach($this->paginator as $location) : ?>
+            <tr>
+                <td><?php echo $this->escape($location->date_location); ?></td>
+
+
+                <td>
+                    <a href="<?php echo $this->url(array('controller'=>'location',
+                        'action'=>'saisir-retour', 'id'=>$location->idlocation));?>">Saisir le retour</a>
+                </td>
+
+            </tr>
+        <?php endforeach; ?>
+        </table>
+    </div>
 </div>
+<?php echo $this->paginator; ?>
