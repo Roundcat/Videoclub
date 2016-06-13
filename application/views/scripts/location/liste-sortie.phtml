@@ -16,12 +16,13 @@ $this->headTitle($this->title);
         <?php
         foreach($this->paginator as $location) : ?>
             <tr>
-                <td><?php echo $this->escape($location->date_location); ?></td>
-
-
+                <td><?php echo $this->escape($location['dateLocation']); ?></td>
+                <td><?php echo $this->escape($location['nomFilm']); ?></td>
+                <td><?php echo $this->escape($location['prenomPersonne']." ".$location['nomPersonne']); ?></td>
+                <td><?php echo $this->escape($location['numeroAdherent']); ?></td>
                 <td>
                     <a href="<?php echo $this->url(array('controller'=>'location',
-                        'action'=>'saisir-retour', 'id'=>$location->idlocation));?>">Saisir le retour</a>
+                        'action'=>'saisir-retour', 'id'=>$location['idLocation']));?>">Saisir le retour</a>
                 </td>
 
             </tr>
